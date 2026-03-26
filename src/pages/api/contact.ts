@@ -93,7 +93,7 @@ export const POST: APIRoute = async ({ request }) => {
       from: 'Spletna stran <noreply@alesjelnikar.si>',
       to: toEmail,
       replyTo: email,
-      subject: `Novo povpraševanje od ${ime}`,
+      subject: `Novo povpraševanje od ${ime.replace(/[\r\n]/g, '')}`,
       html,
     });
 
