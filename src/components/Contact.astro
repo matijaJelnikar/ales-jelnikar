@@ -2,206 +2,164 @@
 
 ---
 
-<section
-  id="kontakt"
-  class="py-24 md:py-32 px-6 md:px-24 bg-surface-container-lowest"
->
-  <div
-    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24"
-  >
-    <!-- Contact info -->
-    <div class="space-y-10">
-      <div class="space-y-4">
-        <span
-          class="font-label text-secondary font-bold uppercase tracking-widest text-sm"
-          >Kontakt</span
-        >
-        <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary">
-          Stopite v stik
-        </h2>
-        <p class="font-body text-on-surface-variant max-w-md">
-          Izpolnite obrazec ali nas pokličite za brezplačen ogled in svetovanje
-          na vašem domu.
+<section id="kontakt" class="py-24 bg-surface-container-low overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row gap-16">
+
+      <!-- Left: contact info -->
+      <div class="lg:w-1/3">
+        <h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-8 text-on-surface">Kontaktirajte nas</h2>
+        <p class="text-secondary mb-12">
+          Pripravljeni smo odgovoriti na vsa vaša vprašanja in pripraviti neobvezujočo ponudbo.
         </p>
-      </div>
 
-      <div class="space-y-6">
-        <div class="flex items-center gap-6">
-          <div
-            class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-primary flex-shrink-0"
-            aria-hidden="true"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">call</span>
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary" aria-hidden="true">phone_in_talk</span>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-wider text-secondary">Telefon</p>
+              <a
+                href="tel:031556508"
+                class="text-lg font-headline font-bold hover:text-primary transition-colors"
+              >031-556-508</a>
+            </div>
           </div>
-          <div>
-            <p
-              class="text-xs font-label uppercase text-on-surface-variant font-bold tracking-widest"
-            >
-              Telefon
-            </p>
-            <a
-              href="tel:031556508"
-              class="text-xl font-headline font-bold text-primary hover:text-primary/80 transition-colors"
-              >031-556-508</a
-            >
+
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary" aria-hidden="true">mail</span>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-wider text-secondary">E-pošta</p>
+              <a
+                href="mailto:info@alesjelnikar.si"
+                class="text-lg font-headline font-bold hover:text-primary transition-colors"
+              >info@alesjelnikar.si</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary" aria-hidden="true">location_on</span>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-wider text-secondary">Lokacija</p>
+              <p class="text-lg font-headline font-bold">Ljubljana &amp; okolica, Slovenija</p>
+            </div>
           </div>
         </div>
 
-        <div class="flex items-center gap-6">
-          <div
-            class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-primary flex-shrink-0"
-            aria-hidden="true"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-          </div>
-          <div>
-            <p
-              class="text-xs font-label uppercase text-on-surface-variant font-bold tracking-widest"
-            >
-              E-pošta
-            </p>
-            <a
-              href="mailto:info@alesjelnikar.si"
-              class="text-xl font-headline font-bold text-primary hover:text-primary/80 transition-colors"
-              >info@alesjelnikar.si</a
-            >
-          </div>
-        </div>
-
-        <div class="flex items-center gap-6">
-          <div
-            class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-primary flex-shrink-0"
-            aria-hidden="true"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-          </div>
-          <div>
-            <p
-              class="text-xs font-label uppercase text-on-surface-variant font-bold tracking-widest"
-            >
-              Področje
-            </p>
-            <p class="text-xl font-headline font-bold text-primary">
-              Slovenija
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact form -->
-    <div
-      class="bg-surface-container-low p-8 md:p-12 rounded-2xl shadow-[0_20px_40px_rgba(43,44,42,0.06)]"
-    >
-      <form id="contact-form" class="space-y-6">
-        <div class="space-y-2">
-          <label
-            for="ime"
-            class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest"
-            >Ime in Priimek <span aria-label="obvezno">*</span></label
-          >
-          <input
-            id="ime"
-            name="ime"
-            type="text"
-            required
-            maxlength="100"
-            placeholder="Vaše ime"
-            class="w-full bg-surface px-4 py-3 rounded-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary text-on-surface placeholder:text-on-surface-variant/50"
+        <!-- Map placeholder -->
+        <div class="mt-12 w-full h-48 bg-surface-container grayscale opacity-80 overflow-hidden border border-outline-variant/30">
+          <img
+            class="w-full h-full object-cover"
+            alt="Zemljevid osrednje Slovenije"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf3hkBNuJsA_uQE40BNJbdRzQqxlzvuJjmA0oM-9WBTmmdgMztOJ9-wiatjzW-GerCwoTjOCytQm_YzEGBiwavv9zUUVsszgTtzWZ3peFDUQl-krrWPAMII1KFuo3-DkFaE4MRe4qfVmbLt7WgIn-bKW7fqfQQWZliOeVeifSHhj_-oYKetdYkwM8I3cLSPUnZxrhPUhIlKPtsgSId8Yw7c3y7jyxd21E1GdJyLAmyqQLwJAQT79jpqqK3hRAQU6hBdf75zqnGViWt"
+            loading="lazy"
           />
         </div>
+      </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Right: contact form -->
+      <div class="lg:w-2/3 bg-white p-8 md:p-12 shadow-2xl">
+        <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label
-              for="email"
-              class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest"
-              >E-naslov <span aria-label="obvezno">*</span></label
-            >
+            <label for="ime" class="text-xs font-bold uppercase tracking-widest text-secondary">
+              Ime in priimek <span aria-label="obvezno">*</span>
+            </label>
+            <input
+              id="ime"
+              name="ime"
+              type="text"
+              required
+              maxlength="100"
+              placeholder="Vpišite vaše ime"
+              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="telefon" class="text-xs font-bold uppercase tracking-widest text-secondary">
+              Telefon
+            </label>
+            <input
+              id="telefon"
+              name="telefon"
+              type="tel"
+              maxlength="20"
+              placeholder="041 000 000"
+              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
+            />
+          </div>
+
+          <div class="space-y-2 md:col-span-2">
+            <label for="email" class="text-xs font-bold uppercase tracking-widest text-secondary">
+              E-naslov <span aria-label="obvezno">*</span>
+            </label>
             <input
               id="email"
               name="email"
               type="email"
               required
               maxlength="200"
-              placeholder="vas@email.si"
-              class="w-full bg-surface px-4 py-3 rounded-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary text-on-surface placeholder:text-on-surface-variant/50"
+              placeholder="vas@email.com"
+              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
             />
           </div>
+
           <div class="space-y-2">
-            <label
-              for="telefon"
-              class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest"
-              >Telefon</label
-            >
+            <label for="datum" class="text-xs font-bold uppercase tracking-widest text-secondary">
+              Željeni datum
+            </label>
             <input
-              id="telefon"
-              name="telefon"
-              type="tel"
-              maxlength="20"
-              placeholder="+386 41 ..."
-              class="w-full bg-surface px-4 py-3 rounded-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary text-on-surface placeholder:text-on-surface-variant/50"
+              id="datum"
+              name="datum"
+              type="date"
+              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface"
             />
           </div>
-        </div>
 
-        <div class="space-y-2">
-          <label
-            for="datum"
-            class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest"
-            >Željeni datum ogleda</label
-          >
+          <div class="space-y-2 md:col-span-2">
+            <label for="opis" class="text-xs font-bold uppercase tracking-widest text-secondary">
+              Opis dela <span aria-label="obvezno">*</span>
+            </label>
+            <textarea
+              id="opis"
+              name="opis"
+              required
+              rows="4"
+              maxlength="2000"
+              placeholder="Opišite vaše želje ali težave z okni..."
+              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50 resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Honeypot — hidden from real users, catches bots -->
           <input
-            id="datum"
-            name="datum"
-            type="date"
-            class="w-full bg-surface px-4 py-3 rounded-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary text-on-surface"
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            class="hidden"
           />
-        </div>
 
-        <div class="space-y-2">
-          <label
-            for="opis"
-            class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest"
-            >Sporočilo <span aria-label="obvezno">*</span></label
-          >
-          <textarea
-            id="opis"
-            name="opis"
-            required
-            rows="5"
-            maxlength="2000"
-            placeholder="Opišite vašo potrebo ali povpraševanje..."
-            class="w-full bg-surface px-4 py-3 rounded-lg border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary text-on-surface placeholder:text-on-surface-variant/50 resize-none"
-          ></textarea>
-        </div>
+          <!-- Status message -->
+          <div
+            id="form-status"
+            role="alert"
+            aria-live="polite"
+            class="hidden text-sm font-body px-4 py-3 md:col-span-2"
+          ></div>
 
-        <!-- Honeypot — hidden from real users, catches bots -->
-        <input
-          type="text"
-          name="website"
-          tabindex="-1"
-          autocomplete="off"
-          aria-hidden="true"
-          class="hidden"
-        />
+          <div class="md:col-span-2 pt-4">
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full bg-primary text-on-primary font-bold py-5 hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest"
+            >
+              Pošljite povpraševanje
+            </button>
+          </div>
+        </form>
+      </div>
 
-        <!-- Status message -->
-        <div
-          id="form-status"
-          role="alert"
-          aria-live="polite"
-          class="hidden text-sm font-body px-4 py-3 rounded-lg"
-        ></div>
-
-        <button
-          type="submit"
-          id="submit-btn"
-          class="w-full bg-primary text-on-primary font-label font-bold py-4 rounded-lg hover:bg-primary/90 transition-all shadow-lg active:scale-95 duration-150"
-        >
-          Pošljite sporočilo
-        </button>
-      </form>
     </div>
   </div>
 </section>
@@ -259,7 +217,7 @@
           : "Napaka pri pošiljanju. Preverite internetno povezavo.";
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = "Pošljite sporočilo";
+      submitBtn.textContent = "Pošljite povpraševanje";
       statusEl.classList.remove("hidden");
       statusEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }

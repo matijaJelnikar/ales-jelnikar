@@ -1,39 +1,63 @@
 ---
 ---
 
-<section id="storitve" class="py-24 md:py-32 px-6 md:px-24 bg-surface-container-low">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-16 md:mb-20 space-y-4">
-      <span class="font-label text-secondary font-bold uppercase tracking-widest text-sm">Naše Storitve</span>
-      <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary">Profesionalne Rešitve</h2>
+<section id="storitve" class="py-24 bg-surface-container-low">
+  <div class="container mx-auto px-6">
+    <div class="mb-16">
+      <h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-4">Naše storitve</h2>
+      <div class="h-1 w-20 bg-primary"></div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-      <div class="space-y-6">
-        <div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center">
-          <span class="material-symbols-outlined text-on-primary-container text-3xl">window</span>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Large feature card -->
+      <div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 flex flex-col justify-between group overflow-hidden relative border border-outline-variant/10">
+        <div>
+          <span class="material-symbols-outlined text-primary text-4xl mb-6" aria-hidden="true">construction</span>
+          <h3 class="text-2xl font-bold font-headline mb-4">Klasična &amp; Panoramska okna</h3>
+          <p class="text-secondary leading-relaxed max-w-md">
+            Montaža vseh tipov VELUX strešnih oken, ki vašemu podstrešju vdihnejo novo življenje.
+            Izbirajte med ročnim ali električnim upravljanjem. Zagotavljamo 100-odstotno vodotesnost
+            z originalnimi obrobami za vse vrste kritin.
+          </p>
         </div>
-        <h3 class="font-headline text-2xl font-bold text-primary">Vgradnja oken</h3>
-        <p class="font-body text-on-surface-variant leading-relaxed">
-          Strokovna montaža novih VELUX strešnih oken po najvišjih standardih proizvajalca za popolno tesnjenje in dolgoletno brezhibnost.
+        <img
+          class="absolute -bottom-10 -right-10 w-64 h-64 object-cover grayscale opacity-10 group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-500"
+          alt="Panoramsko strešno okno v modernem podstrešju"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8bj6kYQn5h6LdzIfXs-rN2Mdt9XKvUXjXEOfnuAuF8n_cz0SXwYLjDGUIZi53nUQiZhDPTRzIks4h_drLQQ3R5IEmqt-QTycAt0Fhb4VPeswWU8LWiQNKnBBrOEQOx_h9XOptmYo2C5Fwt4pxvrX7C-M4zytxpiZRknOr7MMwUAzgEhrrzvAGEFgn5G-HmMpI-tv2-4TUIlLpm1lslhV65Ue9L_BDWOC7PUkPScrfJVv56ZYc696Nl7KTgKGfDOvbTGY9B8_AxPvi"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Svetlobniki card -->
+      <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+        <span class="material-symbols-outlined text-primary text-3xl mb-4" aria-hidden="true">wb_sunny</span>
+        <h3 class="text-xl font-bold font-headline mb-2">Svetlobniki</h3>
+        <p class="text-sm text-secondary">
+          Idealna rešitev za hodnike in kopalnice brez neposrednega dostopa do svetlobe.
         </p>
       </div>
-      <div class="space-y-6">
-        <div class="w-16 h-16 bg-secondary-container rounded-xl flex items-center justify-center">
-          <span class="material-symbols-outlined text-on-secondary-container text-3xl">build</span>
-        </div>
-        <h3 class="font-headline text-2xl font-bold text-primary">Servis in vzdrževanje</h3>
-        <p class="font-body text-on-surface-variant leading-relaxed">
-          Redni pregledi, menjava tesnil, mazanje okovja in popravila za dolgotrajno brezhibno delovanje vaših strešnih oken.
+
+      <!-- Obrobe card -->
+      <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+        <span class="material-symbols-outlined text-primary text-3xl mb-4" aria-hidden="true">architecture</span>
+        <h3 class="text-xl font-bold font-headline mb-2">Obrobe &amp; Senčila</h3>
+        <p class="text-sm text-secondary">
+          Zagotavljamo vodotesnost z originalnimi VELUX obrobami. Montaža notranjih in zunanjih senčil po meri.
         </p>
       </div>
-      <div class="space-y-6">
-        <div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center">
-          <span class="material-symbols-outlined text-on-primary-container text-3xl">blinds</span>
+
+      <!-- CTA strip -->
+      <div class="bg-primary text-on-primary p-8 md:col-span-3 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <h3 class="text-2xl font-bold font-headline mb-2">Potrebujete servis obstoječih oken?</h3>
+          <p class="opacity-90">Izvajamo vzdrževalna dela, menjavo tesnil in popravila.</p>
         </div>
-        <h3 class="font-headline text-2xl font-bold text-primary">Senčila in rolete</h3>
-        <p class="font-body text-on-surface-variant leading-relaxed">
-          Montaža notranjih in zunanjih senčil za optimalno toplotno izolacijo in popoln nadzor nad dnevno svetlobo.
-        </p>
+        <a
+          href="#kontakt"
+          class="bg-white text-primary px-8 py-3 font-bold hover:bg-zinc-100 transition-colors shrink-0"
+        >
+          Rezerviraj termin
+        </a>
       </div>
     </div>
   </div>

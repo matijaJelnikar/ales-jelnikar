@@ -1,374 +1,387 @@
 <!DOCTYPE html>
 
-<html class="light" lang="sl"><head>
+<html class="scroll-smooth" lang="sl"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Aleš Jelnikar | Strokovna montaža VELUX strešnih oken</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Aleš Jelnikar | Certificiran VELUX Monter</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "primary": "#1a3a2a", // Forest Green
-              "secondary": "#c8a97e", // Warm Beige
-              "background": "#ffffff",
-              "surface": "#fcf9f5",
-              "on-surface": "#1b1c1a",
-              "on-surface-variant": "#424843",
-              "outline-variant": "#c1c8c2",
-              "secondary-container": "#f4ede2",
-              "on-secondary-container": "#594320",
-              "primary-container": "#d1e8da",
-              "on-primary-container": "#002113",
+              "on-primary-fixed-variant": "#93000d",
+              "on-tertiary-fixed-variant": "#004b72",
+              "surface-dim": "#dadada",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#fcfcff",
+              "tertiary-fixed": "#cbe6ff",
+              "on-primary-fixed": "#410002",
+              "outline": "#936e6a",
+              "on-surface": "#1a1c1c",
+              "on-tertiary-fixed": "#001e31",
+              "secondary-fixed": "#e5e2df",
+              "primary-container": "#e71621",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#90cdff",
+              "surface-container-high": "#e8e8e8",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#5e3f3c",
+              "on-background": "#1a1c1c",
+              "primary-fixed": "#ffdad6",
+              "tertiary": "#006192",
+              "surface-bright": "#f9f9f9",
+              "outline-variant": "#e8bcb7",
+              "on-primary-container": "#fffbff",
+              "secondary-container": "#e2dfdc",
+              "secondary-fixed-dim": "#c8c6c3",
+              "surface-container": "#eeeeee",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "surface": "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "on-secondary-fixed": "#1b1c1a",
+              "surface-tint": "#c00014",
+              "secondary": "#5f5e5c",
+              "inverse-surface": "#2f3131",
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#636260",
+              "surface-container-low": "#f3f3f3",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary-fixed-variant": "#474744",
+              "primary": "#bb0013",
+              "primary-fixed-dim": "#ffb4ab",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#ffb4ab",
+              "on-error": "#ffffff",
+              "background": "#f9f9f9",
+              "tertiary-container": "#007bb7"
             },
             fontFamily: {
-              "headline": ["Manrope", "sans-serif"],
-              "body": ["Inter", "sans-serif"],
-              "label": ["Manrope", "sans-serif"]
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
             },
-            borderRadius: {
-              "DEFAULT": "0.25rem",
-              "lg": "0.5rem",
-              "xl": "1rem",
-              "full": "9999px"
-            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
           },
         },
       }
     </script>
 <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .tonal-shift-bottom {
-        box-shadow: 0 4px 30px -10px rgba(26, 58, 42, 0.1);
-      }
-      .glass-effect {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-      }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .masonry { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .masonry { column-count: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
     </style>
-</head>
-<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- TopAppBar Component -->
-<header class="fixed top-0 w-full z-50 bg-[#fcf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(43,44,42,0.06)] px-6 py-4 md:px-12 md:py-6 transition-all duration-300">
-<div class="max-w-7xl mx-auto flex justify-between items-center">
-<div class="flex items-center gap-4">
-<button aria-label="Menu" class="material-symbols-outlined text-primary md:hidden p-2 -ml-2">menu</button>
-<a class="font-headline font-black text-primary uppercase tracking-widest text-lg md:text-xl" href="#">The Sculpted Aperture</a>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-600 dark:text-red-500" data-icon="grid_view">grid_view</span>
+<span class="text-xl font-black text-zinc-900 dark:text-white tracking-tighter font-headline">ALEŠ JELNIKAR</span>
 </div>
-<nav class="hidden md:flex items-center gap-10">
-<a class="font-label font-bold tracking-tight text-primary opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-300" href="#storitve">Storitve</a>
-<a class="font-label font-bold tracking-tight text-primary opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-300" href="#galerija">Galerija</a>
-<a class="font-label font-bold tracking-tight text-primary opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-300" href="#o-nas">O nas</a>
-<a class="font-label font-bold tracking-tight text-primary opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-300" href="#kontakt">Kontakt</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#storitve">Storitve</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#galerija">Galerija</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#o-nas">O nas</a>
+<a class="bg-primary text-on-primary px-6 py-2 font-bold hover:opacity-90 active:scale-95 duration-200 transition-all" href="#kontakt">Kontakt</a>
+</div>
+<!-- Mobile Menu Toggle (simplified for static HTML) -->
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined text-3xl" data-icon="menu">menu</span>
+</button>
 </nav>
-<div class="flex items-center gap-6">
-<a class="hidden sm:block bg-primary text-white px-6 py-3 rounded-lg font-headline font-bold text-sm tracking-wide hover:bg-opacity-90 transition-all active:scale-95 duration-150" href="#kontakt">
-                Get a Quote
-            </a>
-</div>
-</div>
 </header>
-<main>
+<main class="pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center pt-24 px-6 md:px-12 overflow-hidden">
+<section class="relative min-h-[751px] flex items-center overflow-hidden bg-surface">
 <div class="absolute inset-0 z-0">
-<img alt="Svetla mansarda z VELUX okni" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfnrdgZrKtxkdNuWFNr3WahYC9iKGbGX7cbSA-EKz1E9geHZQ6KRs618ll_5m3M_4m63HsFXdzqzjidnLkcT0l3VczVeX3jCbx2hZ9MJwXogyDUsV6L85-bEgmboJRcDEZpXnkXeRTZIYVShN8tk28si6YUGB8rwOEH9LX2GcQhUt0ycD_siLjdCFDj5szuYeHn_XAdDiSV55pm2LyBwJiqNz0KeLfHGbOUP6Y2dKZucImH_Y85EavdeZrxpFcp7AP7we2SEM1EJLR"/>
-<div class="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white/95 md:from-white/80 via-white/40 to-transparent"></div>
+<img class="w-full h-full object-cover opacity-90" data-alt="Modern attic interior with multiple large VELUX skylights flooding a clean white room with bright natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJHZNnyCWUFGJm7vhkuPnBkMSlyzMNIpqhEH3paq9gDFQ2yJnQeYrqNjogpgM1Te_mfpslkUJgbeaEtQDlhOs-bc6-et4Jd0ztpet8FaJbqcmvkzQdDMc1EhCCYu_mkmhtXt7Jo6JRXdXYYxEZ00dLjm-ZaDVlfey70ELIusZ__HmnVN6Byo20MKspf7KUEBRsib-8IsYYbxEUmG7FlU0rwFBFABEGnyah1YYTOYeKwCLcUQTjgrVXegij8eVsKKyEW_8kug6XnhqV"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
 </div>
-<div class="relative z-10 max-w-4xl">
-<span class="inline-block py-1.5 px-4 mb-6 bg-secondary text-white font-headline font-bold text-xs uppercase tracking-[0.2em] rounded">Certificiran VELUX Monter</span>
-<h1 class="font-headline font-extrabold text-5xl md:text-7xl lg:text-8xl text-primary leading-[1.1] mb-8 tracking-tighter">
-                Svetloba v <br/><span class="text-secondary">vaš dom.</span>
-</h1>
-<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-xl mb-12 leading-relaxed">
-                Strokovna montaža in svetovanje za vse vrste VELUX strešnih oken. Izboljšajte kakovost bivanja z naravno svetlobo in vrhunsko slovensko izdelavo.
-            </p>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="flex items-center justify-center gap-3 bg-primary text-white px-8 py-5 rounded-xl font-headline font-bold text-lg transition-all hover:opacity-95 active:scale-95 shadow-lg" href="tel:+38641000000">
-<span class="material-symbols-outlined" data-icon="call">call</span>
-                    Pokličite nas
-                </a>
-<a class="flex items-center justify-center gap-3 bg-white text-primary border-2 border-primary/10 px-8 py-5 rounded-xl font-headline font-bold text-lg transition-all hover:bg-surface active:scale-95" href="#kontakt">
-                    Pošljite povpraševanje
-                </a>
-</div>
-</div>
-</section>
-<!-- Services Section -->
-<section class="py-24 px-6 md:px-12 bg-surface" id="storitve">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+<div class="container mx-auto px-6 relative z-10">
 <div class="max-w-2xl">
-<h2 class="font-headline font-bold text-3xl md:text-5xl text-primary mb-6 tracking-tight">Celovite rešitve za vašo streho</h2>
-<p class="font-body text-on-surface-variant text-lg">Specializirani smo za vgradnjo celotnega nabora VELUX izdelkov, ki zagotavljajo energijsko učinkovitost in maksimalno udobje.</p>
-</div>
-<span class="hidden md:block font-headline font-black text-6xl text-primary/5 select-none uppercase">Storitve</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Service 1 -->
-<div class="bg-white p-8 rounded-2xl shadow-sm border border-primary/5 flex flex-col group transition-all hover:shadow-xl hover:-translate-y-1">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="window">window</span>
-<h3 class="font-headline font-bold text-2xl text-primary mb-4">Klasična strešna okna</h3>
-<p class="font-body text-on-surface-variant mb-6">Brezčasna izbira za vsako mansardo. Zagotavljajo odličen pogled in optimalno prezračevanje.</p>
-<div class="mt-auto overflow-hidden rounded-xl h-48 relative">
-<img alt="VELUX okno" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6fhV-DrvVGlDxBlnmdUm9wr-fsnNK9AXhPAUfxu3cwAc0bQyWTgzmm0qtMAbIm6hTnpcKsASXTfZxlJCglx6mjVaDFboVdXINqXdksHN8cOLD_oHZbjCMJO5t5QMQg9AxBo_bcgSr03vbVUgKzhK8Ths98yrEJbrDkKeYZQQxkANH3XufgfiH0_4Zbl_b0jmyrlrK0qZZlCER-jHZIeFZDbsAA3LYol4nbZ5p9_MMgcbYZTv3uLdaGTa-RNIM_HdyDdbPvcWJiCl0"/>
-</div>
-</div>
-<!-- Service 2 -->
-<div class="bg-primary text-white p-8 rounded-2xl shadow-sm flex flex-col justify-between group">
-<div>
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="visibility">visibility</span>
-<h3 class="font-headline font-bold text-2xl mb-4">Panoramska okna</h3>
-<p class="text-white/80 mb-8">Odprite prostor naravi z okni, ki se odpirajo navzven in nudijo neoviran razgled.</p>
-</div>
-<div class="flex items-center gap-2 font-headline font-bold text-secondary">
-<span>Več o ponudbi</span>
-<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</div>
-<!-- Small Grid for other services -->
-<div class="grid grid-cols-1 gap-6">
-<div class="bg-white p-6 rounded-2xl border border-primary/5 flex items-center gap-5 hover:bg-secondary-container transition-colors group">
-<div class="w-12 h-12 bg-surface rounded-lg flex items-center justify-center text-primary group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
-</div>
-<div>
-<h4 class="font-headline font-bold text-primary">Svetlobniki</h4>
-<p class="text-sm text-on-surface-variant">Naravna svetloba povsod.</p>
-</div>
-</div>
-<div class="bg-white p-6 rounded-2xl border border-primary/5 flex items-center gap-5 hover:bg-secondary-container transition-colors group">
-<div class="w-12 h-12 bg-surface rounded-lg flex items-center justify-center text-primary group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
-</div>
-<div>
-<h4 class="font-headline font-bold text-primary">Vodotesna vgradnja</h4>
-<p class="text-sm text-on-surface-variant">Obrobe za vse kritine.</p>
-</div>
-</div>
-<div class="bg-white p-6 rounded-2xl border border-primary/5 flex items-center gap-5 hover:bg-secondary-container transition-colors group">
-<div class="w-12 h-12 bg-surface rounded-lg flex items-center justify-center text-primary group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined" data-icon="shading">shading</span>
-</div>
-<div>
-<h4 class="font-headline font-bold text-primary">Senčila in rolete</h4>
-<p class="text-sm text-on-surface-variant">Popolna zatemnitev.</p>
-</div>
-</div>
+<span class="inline-block bg-primary text-on-primary text-xs font-bold px-3 py-1 mb-6 tracking-widest uppercase">Certificiran VELUX Monter</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-surface leading-[1.1] mb-6 tracking-tight">
+                        Svetloba v <span class="text-primary italic">vaš dom</span>
+</h1>
+<p class="text-xl text-secondary mb-10 leading-relaxed max-w-lg">
+                        Strokovna montaža in servis strešnih oken VELUX. Z večletnimi izkušnjami zagotavljamo vrhunsko kakovost bivanja pod vašo streho.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 font-bold flex items-center justify-center gap-2 hover:shadow-lg transition-all active:scale-95" href="tel:+386000000">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+                            Pokličite nas
+                        </a>
+<a class="bg-surface-container-highest text-on-secondary-container px-8 py-4 font-bold flex items-center justify-center gap-2 hover:bg-surface-container-high transition-all active:scale-95" href="#kontakt">
+                            Pošljite povpraševanje
+                        </a>
 </div>
 </div>
 </div>
 </section>
-<!-- Gallery Section -->
-<section class="py-24 px-6 md:px-12 bg-white" id="galerija">
-<div class="max-w-7xl mx-auto">
-<h2 class="font-headline font-bold text-3xl md:text-4xl text-primary mb-12 text-center">Reference naših projektov</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="aspect-square overflow-hidden rounded-2xl group relative">
-<img alt="Zunanja montaža VELUX oken" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2neqixG_Lkjj_bjBSKc40mvDjr3KNQhIUPmcCeHnOx9UbD_w__HVI_3W7InpJ98peNcRYLpJoCTy45QWz6ZOWF99ljUHDd8QmsSC8DRvFAWKPucZmz7PEvPVR5oeqHTa6z2VzPDsRi4uAkSI6YD8NivqKzXfltIa229CZ7gCx6iENN2fdl9wEIgjhFGcBPLEua-Vwpkxft4Hispu5I2rDaX2PMibc48Pg_977APgmIeQNWZ8Oz5B_r_W1ifycbRDkCBXwVAvxSibA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<p class="text-white font-bold">Stanovanjska hiša, Ljubljana</p>
+<!-- Services Section (Bento Grid) -->
+<section class="py-24 bg-surface-container-low" id="storitve">
+<div class="container mx-auto px-6">
+<div class="mb-16">
+<h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-4">Naše storitve</h2>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 flex flex-col justify-between group overflow-hidden relative border border-outline-variant/10">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="construction">construction</span>
+<h3 class="text-2xl font-bold font-headline mb-4">Klasična &amp; Panoramska okna</h3>
+<p class="text-secondary leading-relaxed max-w-md">Montaža vseh tipov VELUX strešnih oken, ki vašemu podstrešju vdihnejo novo življenje. Izbirajte med ročnim ali električnim upravljanjem.</p>
+</div>
+<img class="absolute -bottom-10 -right-10 w-64 h-64 object-cover grayscale opacity-10 group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-500" data-alt="Interior view of a modern wooden roof structure with large panoramic skylights overlooking a blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8bj6kYQn5h6LdzIfXs-rN2Mdt9XKvUXjXEOfnuAuF8n_cz0SXwYLjDGUIZi53nUQiZhDPTRzIks4h_drLQQ3R5IEmqt-QTycAt0Fhb4VPeswWU8LWiQNKnBBrOEQOx_h9XOptmYo2C5Fwt4pxvrX7C-M4zytxpiZRknOr7MMwUAzgEhrrzvAGEFgn5G-HmMpI-tv2-4TUIlLpm1lslhV65Ue9L_BDWOC7PUkPScrfJVv56ZYc696Nl7KTgKGfDOvbTGY9B8_AxPvi"/>
+</div>
+<!-- Small Cards -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="wb_sunny">wb_sunny</span>
+<h3 class="text-xl font-bold font-headline mb-2">Svetlobniki</h3>
+<p class="text-sm text-secondary">Idealna rešitev za hodnike in kopalnice brez neposrednega dostopa do svetlobe.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="architecture">architecture</span>
+<h3 class="text-xl font-bold font-headline mb-2">Obrobe</h3>
+<p class="text-sm text-secondary">Zagotavljamo 100% vodotesnost z originalnimi VELUX obrobami za vse vrste kritin.</p>
+</div>
+<div class="bg-primary text-on-primary p-8 md:col-span-3 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-center md:text-left">
+<h3 class="text-2xl font-bold font-headline mb-2">Potrebujete servis obstoječih oken?</h3>
+<p class="opacity-90">Izvajamo vzdrževalna dela, menjavo tesnil in popravila.</p>
+</div>
+<a class="bg-white text-primary px-8 py-3 font-bold hover:bg-zinc-100 transition-colors shrink-0" href="#kontakt">Rezerviraj termin</a>
 </div>
 </div>
-<div class="aspect-square overflow-hidden rounded-2xl group relative">
-<img alt="Kopalniško okno" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vezgzVnTGb3dYKaPHBYU15D6XSKd0EjJt2aryD-uUqu_7a-883zNw4dDuk1n18o3BtiAaPwRa3ABkWSN8egvPZ1oHeMneXK_qqvI_ojJm0Vfh_gkmhLPb9WvJ6iw_Q3fMCzSe7m3Cde3RvyA_o5htyriWq3IC4an0VAkpAe0NMFQfqGuYBuLn99Kz0l94mT_B8UnkxAaeYXhM-ie11fa_AAWGrQFZSVr1__-ujxWwO-Rm9corkvbAiUqP_VL0A736LD3kh0vUGRf"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<p class="text-white font-bold">Mansardna kopalnica, Kranj</p>
+</div>
+</section>
+<!-- Gallery Section (Masonry) -->
+<section class="py-24 bg-surface" id="galerija">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-4">Referenčni projekti</h2>
+<p class="text-secondary max-w-xl mx-auto">Oglejte si nekaj naših zadnjih montaž po celotni Sloveniji.</p>
+</div>
+<div class="masonry">
+<div class="masonry-item group relative overflow-hidden bg-zinc-200">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-500" data-alt="Professional installation of three vertical skylights in a modern minimalist workspace with natural wood accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxOjYxS_ROFmSjCvaU85GIx75P8b083Mf_mZ_02iAz0CrA6fULS727jrgaRUExa76kszJFyrqwcjIOkubbfNdZnqiekccBpZH3ulyqG14cAPeSgn-kz1m1sbcjYexn7s5Kq4cgUHqp4ZT4TE3KV5NmN_-EXYrSRp9ebtFnbIyw5ZeYOJ3rY8-QVHKdS5-sCMQrsoTVKYwGWWWfq1DH43ADqNqBSp4UROu6VFDdmiG3RTVBg9mnXWLs_3Sb1AiDnFoemp4PjiFEEtbM"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-white font-bold">Ljubljana, 2023</p>
 </div>
 </div>
-<div class="aspect-square overflow-hidden rounded-2xl group relative">
-<img alt="Panoramski razgled" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpCOTvCpqJMjknbZl7doGJNhMGD5mFyMT--SxLodGoB46KgthiK0nG4WznmVhm0PCCbW-7ViusBsvx93wm_PmWYn7Fmmb83-9hMOeWQzDF3bJe_a31mdJ63JKgFEZgd0zTRP91K0iui_wIWnse-5o75_VK0EvsQtx6DhTooBh5gXZhO9Fvka9DPi-z1b3_1NLsJsmg8395k1wrfLVwVjPEimEheC8obGy4XlLuscJp6R3J-xPJWCrwTr0sri1eDylT9_13y7Ta1TSA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<p class="text-white font-bold">Dnevni prostor, Domžale</p>
+<div class="masonry-item group relative overflow-hidden bg-zinc-200">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-500" data-alt="Close up of a VELUX window handle and frame showing high quality craftsmanship and clean finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6HESHAjvQrr3Bzz-m0T5tTYYHRYQqVJzJYBNPguyedO9UzV1ak-9-6HIoGaodnqib-Fnr8W6ZqVTJbHhZn8sH2y6G5AkF-xo9v-YUIHSZNLLI6u_iq0EF9_Z30f_WIokSkbG7J2plYN3nEmSq6iSDndNDHhJBY5xDqWrtqdIPFu5TYVZ1rXbXvo3kVF_OLK0XX8PigGqJcpDd2BiXv7o7g7xN_AtfoNg1dwg0kaXz1-u9drQjY8v49M19sx-Hym0pYqMNbSy45EQe"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-white font-bold">Kranj, 2023</p>
+</div>
+</div>
+<div class="masonry-item group relative overflow-hidden bg-zinc-200">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-500" data-alt="Modern kitchen under a large skylight with sun rays hitting the countertop during afternoon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4wKQuSGLBR3bBTf5vgCGLnf6vpTXP9Svjyyq-jzPiOg97OAFT01gFFPuk0p2uB5iJVjn5-ZoTfZZbyS7LdBILu2xGWwHVcgywKYa1ujYgnQfBVZQHdSaq192DyWaVlJa-Iho9Aj1tVRNYpOG3YkxAlDMaBcAYdMvY0p7O70wSxH_uO0lNAxGTZV3x4uKR-40yvMPTw0lWu-mR7zp4SfQM2B6eH2e42vEmExjkHCL94qr4WHlUP5e1hEqwEMDYZoXQNmLZXiWAc1Qa"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-white font-bold">Celje, 2024</p>
+</div>
+</div>
+<div class="masonry-item group relative overflow-hidden bg-zinc-200">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-500" data-alt="Exterior roof view of perfectly integrated skylights with grey shingles on a luxury house" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0YEVAhLJDXtYv308TAegOJOoV5UrepmKzh0bGeEPdVEZTxGOqYe90hgTE4DW_BoKckZzvTa1gRpkM-0Kv8aDvlxFM0H7mFjDNUTBBxukbBMNkSobOmkAdRECywHXE5W1nkPFHn6taGHZ8ciPZsKjabEVJVWQVlSb7H2Ht0eqKEr6Twic8EchsLcPw-XazPrijCk0CgGl4l1qV8ZRbTGZuTsui9KZUeJv3lRd3QmdPldjxaJNR330PWXXUpyUYK73GckSgS973sGyv"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-white font-bold">Maribor, 2024</p>
+</div>
+</div>
+<div class="masonry-item group relative overflow-hidden bg-zinc-200">
+<img class="w-full h-auto hover:scale-105 transition-transform duration-500" data-alt="Minimalist bedroom in attic with soft morning light coming through a VELUX window with integrated blinds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHHvjfs6i9GkdYfMf1GJ1e6Io4R8TBK6zlAHTBBuSA0pZwyU_U1bMAKD4bPIiNRte8KApkiUx6nChyfxmCrITJAJccrDhz33biHvpVzCYVfkzI85VSGpET5T5HzPHJg0eZz8ivFw2tES1adebGpwb6LRLYUIAyG7mb51lj8KSeg3IybCjVBsbSZi-84nXTZJVjfBax4XT2bm645SiEtso4Ka65SapQG2Rwl0nxnPLmgep2NOkSgnWVg0iGBk-gC-YiwrvOUMT7f_G1"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<p class="text-white font-bold">Koper, 2023</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <!-- About Section -->
-<section class="py-24 px-6 md:px-12 bg-surface" id="o-nas">
-<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+<section class="py-24 bg-surface-container" id="o-nas">
+<div class="container mx-auto px-6">
+<div class="flex flex-col lg:flex-row items-center gap-16">
 <div class="lg:w-1/2 relative">
-<div class="rounded-3xl overflow-hidden shadow-2xl">
-<img alt="Mojster Aleš pri delu" class="w-full aspect-[4/5] md:aspect-square object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcbXFQhHzvD8_ncTlLOiMeiUcuLeGg-GUzvSu7DX3KUx1Ezgxrslvbd2ydTW78X_6EpTLW37OwwiAZ3VqxC6045tf6eMcrBJ9DFuRzsjHG27jQm1MYlT7k8slyqVqsV73W28uXXqNbZSz5dxURoRBN8NhULVil-fqWapZJlgllSCHe64ds_TiaGivl4DjrpolO9KbRIS1D2wLgv0cmxJ1f_CAyYIyOKu-ZXKONo545ETt_EdMJwJqdSDD9BjmWgyXNzKOAk_ZQES31"/>
-</div>
-<div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl hidden md:flex items-center gap-4 border border-secondary/20">
-<div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center text-white">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
-</div>
-<div>
-<p class="font-headline font-black text-2xl text-primary">15+ Let</p>
-<p class="text-sm text-on-surface-variant font-medium">Izkušenj na terenu</p>
-</div>
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 -z-10"></div>
+<img class="shadow-2xl border-b-8 border-primary" data-alt="Close-up of a professional technician in work clothes using a level to install a window frame with precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEAcexdZOtRAyGtNZI1GVwSB-SU5bA_G9-yzljDd8wcfxsYQRPRGxP0O5ufurnwq30KoQTC1hZqVKJNZbkjj2tG6vwuZ-WcY4iUrIetOXFYoqns6DgxgW8LMhl76x9TWghqilM0mw8Q4zg8ZWN4AdJI0ZCChCHNOLopNxhA9qUEigpglVuw2Lillht0wvaMndZAiOzJ7l89QESO1I8byA1R66mFQ2bpGmHhHA9fVoeOUGkgsfyWJ1XAXZAn_kK-9lZv_i1kINwft7a"/>
+<div class="absolute -bottom-10 -right-10 bg-white p-6 shadow-xl hidden md:block border border-outline-variant/20">
+<p class="text-4xl font-black text-primary font-headline tracking-tighter">15+</p>
+<p class="text-xs uppercase tracking-widest font-bold text-secondary">Let izkušenj</p>
 </div>
 </div>
 <div class="lg:w-1/2">
-<h2 class="font-headline font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Aleš Jelnikar – Vaš zaupanja vreden monter</h2>
-<div class="space-y-6 text-on-surface-variant leading-relaxed text-lg">
-<p>Kot certificiran VELUX monter z dolgoletnimi izkušnjami zagotavljam brezhibno vgradnjo, ki bo vašemu domu vdihnila novo življenje. Moje delo temelji na natančnosti, čistosti in spoštovanju rokov.</p>
-<p>Vsak projekt obravnavam individualno, saj vsaka streha zahteva svojo specifično rešitev. Poskrbim za celoten proces – od svetovanja do končne fine montaže.</p>
+<h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-8 leading-tight">Zavezanost h kakovosti in natančnosti</h2>
+<div class="space-y-6 text-secondary leading-relaxed">
+<p>Sem Aleš Jelnikar, certificiran VELUX monter z dolgoletno tradicijo. Moje delo temelji na prepričanju, da je vsak dom unikaten in si zasluži najboljšo naravno osvetlitev.</p>
+<p>Specializiran sem za celovite rešitve – od svetovanja pri izbiri najprimernejših oken do strokovne vgradnje, ki zagotavlja dolgotrajno uporabo brez skrbi. Vsak projekt obravnavam z obrtniško natančnostjo.</p>
 </div>
-<div class="mt-10 space-y-4">
-<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-primary/5">
-<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
-<span class="font-headline font-semibold text-primary">Uradni VELUX certifikat za montažo</span>
-</div>
-<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-primary/5">
-<span class="material-symbols-outlined text-secondary" data-icon="task_alt">task_alt</span>
-<span class="font-headline font-semibold text-primary">Garancija na vsa opravljena dela</span>
+<div class="mt-12 flex items-center gap-6 grayscale opacity-70">
+<span class="material-symbols-outlined text-5xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="h-px w-12 bg-outline-variant"></div>
+<span class="font-headline font-bold text-lg tracking-tight">URADNI PARTNER VELUX SLOVENIJA</span>
 </div>
 </div>
 </div>
 </div>
 </section>
 <!-- Reviews Section -->
-<section class="py-24 px-6 md:px-12 bg-white">
-<div class="max-w-7xl mx-auto">
+<section class="py-24 bg-surface">
+<div class="container mx-auto px-6">
 <div class="text-center mb-16">
-<h2 class="font-headline font-bold text-3xl md:text-4xl text-primary mb-4">Mnenja naših strank</h2>
-<div class="w-20 h-1 bg-secondary mx-auto"></div>
+<h2 class="font-headline text-3xl md:text-4xl font-extrabold">Zadovoljne stranke</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Review 1 -->
-<div class="bg-surface p-8 rounded-2xl border border-primary/5">
-<div class="flex text-secondary mb-4">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/10 shadow-sm">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="text-on-surface-variant mb-6 italic">"Aleš je opravil odlično delo pri zamenjavi starih oken. Bil je hiter, natančen in za sabo je vse pospravil. Zelo priporočam!"</p>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">M</div>
-<div>
-<p class="font-bold text-primary">Marko P.</p>
-<p class="text-xs text-on-surface-variant">Ljubljana</p>
-</div>
-</div>
+<p class="text-on-surface mb-6 italic leading-relaxed">"Gospod Aleš je delo opravil izjemno profesionalno. Okna so bila vgrajena hitro, čisto in točno po dogovoru."</p>
+<p class="font-bold text-sm">— Marko P., Ljubljana</p>
 </div>
 <!-- Review 2 -->
-<div class="bg-surface p-8 rounded-2xl border border-primary/5">
-<div class="flex text-secondary mb-4">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/10 shadow-sm">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="text-on-surface-variant mb-6 italic">"Odlično svetovanje glede izbire senčil. Montaža je bila izvedena brez težav, kljub zahtevni strehi. Profesionalno!"</p>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">S</div>
-<div>
-<p class="font-bold text-primary">Sabina K.</p>
-<p class="text-xs text-on-surface-variant">Kranj</p>
-</div>
-</div>
+<p class="text-on-surface mb-6 italic leading-relaxed">"Svetovanje pred nakupom je bilo ključno. Svetlobnik v hodniku je popolnoma spremenil vzdušje v hiši."</p>
+<p class="font-bold text-sm">— Ana L., Domžale</p>
 </div>
 <!-- Review 3 -->
-<div class="bg-surface p-8 rounded-2xl border border-primary/5">
-<div class="flex text-secondary mb-4">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/10 shadow-sm">
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<p class="text-on-surface-variant mb-6 italic">"Redko najdeš tako korektnega mojstra. Držal se je vseh rokov in cena je bila točno takšna, kot smo se dogovorili."</p>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">J</div>
-<div>
-<p class="font-bold text-primary">Janez L.</p>
-<p class="text-xs text-on-surface-variant">Domžale</p>
-</div>
-</div>
+<p class="text-on-surface mb-6 italic leading-relaxed">"Zelo odziven in strokoven. Njegove izkušnje se vidijo pri vsakem detajlu montaže."</p>
+<p class="font-bold text-sm">— Robert K., Kranj</p>
 </div>
 </div>
 </div>
 </section>
 <!-- Contact Section -->
-<section class="py-24 px-6 md:px-12 bg-surface" id="kontakt">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-<div>
-<h2 class="font-headline font-bold text-3xl md:text-5xl text-primary mb-8 tracking-tight">Stopite v stik</h2>
-<p class="text-on-surface-variant text-lg mb-12">Imate vprašanje ali potrebujete informativni izračun? Izpolnite obrazec in odgovorili vam bomo v najkrajšem možnem času.</p>
+<section class="py-24 bg-surface-container-low overflow-hidden" id="kontakt">
+<div class="container mx-auto px-6">
+<div class="flex flex-col lg:flex-row gap-16">
+<div class="lg:w-1/3">
+<h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-8">Kontaktirajte nas</h2>
+<p class="text-secondary mb-12">Pripravljeni smo odgovoriti na vsa vaša vprašanja in pripraviti neobvezujočo ponudbo.</p>
 <div class="space-y-8">
-<div class="flex items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-2xl" data-icon="phone">phone</span>
-</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="phone_in_talk">phone_in_talk</span>
 <div>
-<p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Telefon</p>
-<a class="text-xl md:text-2xl font-headline font-bold text-primary" href="tel:+38641000000">+386 41 000 000</a>
+<p class="font-bold text-sm uppercase tracking-wider text-secondary">Telefon</p>
+<a class="text-lg font-headline font-bold hover:text-primary transition-colors" href="tel:+386000000">+386 (0)41 123 456</a>
 </div>
 </div>
-<div class="flex items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-2xl" data-icon="mail">mail</span>
-</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
 <div>
-<p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">E-pošta</p>
-<a class="text-xl md:text-2xl font-headline font-bold text-primary" href="mailto:info@alesjelnikar.si">info@alesjelnikar.si</a>
+<p class="font-bold text-sm uppercase tracking-wider text-secondary">E-pošta</p>
+<a class="text-lg font-headline font-bold hover:text-primary transition-colors" href="mailto:info@alesjelnikar.si">info@alesjelnikar.si</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<p class="font-bold text-sm uppercase tracking-wider text-secondary">Lokacija</p>
+<p class="text-lg font-headline font-bold">Ljubljana &amp; okolica, Slovenija</p>
 </div>
 </div>
 </div>
+<div class="mt-12 w-full h-48 bg-surface-container grayscale opacity-80 overflow-hidden border border-outline-variant/30">
+<!-- Map Placeholder -->
+<img class="w-full h-full object-cover" data-alt="Minimalist abstract map of a city region with clean lines and neutral tones" data-location="Ljubljana" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf3hkBNuJsA_uQE40BNJbdRzQqxlzvuJjmA0oM-9WBTmmdgMztOJ9-wiatjzW-GerCwoTjOCytQm_YzEGBiwavv9zUUVsszgTtzWZ3peFDUQl-krrWPAMII1KFuo3-DkFaE4MRe4qfVmbLt7WgIn-bKW7fqfQQWZliOeVeifSHhj_-oYKetdYkwM8I3cLSPUnZxrhPUhIlKPtsgSId8Yw7c3y7jyxd21E1GdJyLAmyqQLwJAQT79jpqqK3hRAQU6hBdf75zqnGViWt"/>
 </div>
-<div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-primary/5">
-<form class="space-y-6">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+</div>
+<div class="lg:w-2/3 bg-white p-8 md:p-12 shadow-2xl">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-wider">Ime in Priimek</label>
-<input class="w-full bg-surface border-none rounded-xl p-5 focus:ring-2 focus:ring-secondary transition-all" placeholder="Janez Novak" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-wider">Telefon</label>
-<input class="w-full bg-surface border-none rounded-xl p-5 focus:ring-2 focus:ring-secondary transition-all" placeholder="041 000 000" type="tel"/>
-</div>
-</div>
-<div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-wider">E-pošta</label>
-<input class="w-full bg-surface border-none rounded-xl p-5 focus:ring-2 focus:ring-secondary transition-all" placeholder="vas@naslov.com" type="email"/>
-</div>
-<div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-wider">Želen datum montaže</label>
-<input class="w-full bg-surface border-none rounded-xl p-5 focus:ring-2 focus:ring-secondary transition-all" type="date"/>
+<label class="text-xs font-bold uppercase tracking-widest text-secondary">Ime in priimek</label>
+<input class="w-full bg-surface-container border-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface" placeholder="Vpišite vaše ime" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="block text-sm font-bold text-primary uppercase tracking-wider">Sporočilo</label>
-<textarea class="w-full bg-surface border-none rounded-xl p-5 focus:ring-2 focus:ring-secondary transition-all" placeholder="Zanima me zamenjava oken..." rows="4"></textarea>
+<label class="text-xs font-bold uppercase tracking-widest text-secondary">Telefon</label>
+<input class="w-full bg-surface-container border-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface" placeholder="041 000 000" type="tel"/>
 </div>
-<button class="w-full bg-primary text-white py-6 rounded-2xl font-headline font-bold text-xl hover:opacity-95 transition-all active:scale-[0.98] shadow-lg" type="submit">
-                        Pošljite povpraševanje
-                    </button>
+<div class="space-y-2 md:col-span-2">
+<label class="text-xs font-bold uppercase tracking-widest text-secondary">E-naslov</label>
+<input class="w-full bg-surface-container border-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface" placeholder="vas@email.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-secondary">Željeni datum</label>
+<input class="w-full bg-surface-container border-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface" type="date"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-xs font-bold uppercase tracking-widest text-secondary">Opis dela</label>
+<textarea class="w-full bg-surface-container border-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface" placeholder="Opišite vaše želje ali težave z okni..." rows="4"></textarea>
+</div>
+<div class="md:col-span-2 pt-4">
+<button class="w-full bg-primary text-on-primary font-bold py-5 hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest" type="submit">Pošljite povpraševanje</button>
+</div>
 </form>
+</div>
 </div>
 </div>
 </section>
 </main>
-<!-- Footer Component -->
-<footer class="bg-primary text-white w-full border-t border-white/10 px-6 md:px-12 py-16">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 w-full">
-<div class="flex flex-col items-center md:items-start">
-<span class="font-headline font-bold text-secondary text-2xl mb-2">Aleš Jelnikar</span>
-<p class="font-body text-sm tracking-wide opacity-70">Strokovna montaža VELUX oken</p>
+<!-- Footer -->
+<footer class="bg-zinc-100 dark:bg-zinc-950 w-full py-12 border-t border-zinc-200 dark:border-zinc-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-manrope font-extrabold text-zinc-900 dark:text-white text-xl tracking-tighter uppercase">ALEŠ JELNIKAR</span>
+<p class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400">© 2024 Aleš Jelnikar. Vse pravice pridržane.</p>
 </div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="font-body text-sm tracking-wide text-white/70 hover:text-white transition-colors" href="#storitve">Services</a>
-<a class="font-body text-sm tracking-wide text-white/70 hover:text-white transition-colors" href="#galerija">Gallery</a>
-<a class="font-body text-sm tracking-wide text-white/70 hover:text-white transition-colors" href="#o-nas">Testimonials</a>
-<a class="font-body text-sm tracking-wide text-white/70 hover:text-white transition-colors" href="#kontakt">Contact</a>
-</div>
-<div class="text-center md:text-right">
-<p class="font-body text-sm tracking-wide opacity-50">© 2024 Sculpted Aperture VELUX Installations. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-red-600 underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#storitve">Storitve</a>
+<a class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-red-600 underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#galerija">Galerija</a>
+<a class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-red-600 underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#o-nas">O nas</a>
+<a class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-red-600 underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#kontakt">Kontakt</a>
+<a class="font-inter text-sm uppercase tracking-widest text-zinc-500 dark:text-zinc-400 hover:text-red-600 underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#">alesjelnikar.si</a>
 </div>
 </div>
 </footer>
+<!-- FAB for direct contact on mobile -->
+<a class="fixed bottom-6 right-6 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center md:hidden z-[100] active:scale-90 transition-transform" href="tel:+386000000">
+<span class="material-symbols-outlined text-3xl" data-icon="call">call</span>
+</a>
 </body></html>

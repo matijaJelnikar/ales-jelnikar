@@ -85,153 +85,130 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Navigation -->
     <header
       id="nav"
-      class="fixed top-0 w-full z-50 bg-[#fcf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(43,44,42,0.06)] transition-all duration-300"
+      class="bg-white/80 backdrop-blur-md fixed top-0 w-full z-50"
     >
-      <div
-        class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 py-5"
-      >
+      <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
         <a href="/" class="flex items-center gap-3">
-          <span
-            class="font-headline font-black text-primary uppercase tracking-widest text-lg leading-none"
-          >
-            Aleš Jelnikar
+          <span class="material-symbols-outlined text-red-600" aria-hidden="true">grid_view</span>
+          <span class="font-headline font-black text-zinc-900 text-xl tracking-tighter uppercase">
+            ALEŠ JELNIKAR
           </span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-8">
           <a
             href="#storitve"
-            class="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >Storitve</a
           >
           <a
             href="#galerija"
-            class="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >Galerija</a
           >
           <a
             href="#o-nas"
-            class="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >O nas</a
           >
           <a
-            href="#ocene"
-            class="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
-            >Ocene</a
-          >
-          <a
             href="#kontakt"
-            class="font-label text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+            class="bg-primary text-on-primary px-6 py-2 font-bold hover:opacity-90 active:scale-95 duration-200 transition-all"
             >Kontakt</a
           >
-        </nav>
-
-        <a
-          href="#kontakt"
-          class="hidden md:inline-flex bg-primary text-on-primary font-label text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors active:scale-95 duration-150"
-        >
-          Brezplačen ogled
-        </a>
+        </div>
 
         <!-- Mobile menu button -->
         <button
           id="menu-btn"
-          class="md:hidden text-primary"
+          class="md:hidden text-on-surface"
           aria-label="Odpri meni"
           aria-expanded="false"
           aria-controls="mobile-nav"
         >
-          <span class="material-symbols-outlined text-2xl" aria-hidden="true">menu</span>
+          <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
         </button>
-      </div>
+      </nav>
 
       <!-- Mobile nav -->
       <div
         id="mobile-nav"
-        class="hidden md:hidden bg-background border-t border-outline-variant/20 px-6 py-4"
+        class="hidden md:hidden bg-white border-t border-outline-variant/20 px-6 py-4"
       >
         <nav class="flex flex-col gap-4">
           <a
             href="#storitve"
-            class="font-label font-semibold text-on-surface-variant py-2"
+            class="font-label font-semibold text-zinc-600 py-2"
             >Storitve</a
           >
           <a
             href="#galerija"
-            class="font-label font-semibold text-on-surface-variant py-2"
+            class="font-label font-semibold text-zinc-600 py-2"
             >Galerija</a
           >
           <a
             href="#o-nas"
-            class="font-label font-semibold text-on-surface-variant py-2"
+            class="font-label font-semibold text-zinc-600 py-2"
             >O nas</a
           >
           <a
-            href="#ocene"
-            class="font-label font-semibold text-on-surface-variant py-2"
-            >Ocene</a
-          >
-          <a
             href="#kontakt"
-            class="font-label font-semibold text-on-surface-variant py-2"
-            >Kontakt</a
+            class="bg-primary text-on-primary font-label font-bold px-5 py-3 text-center mt-2"
           >
-          <a
-            href="#kontakt"
-            class="bg-primary text-on-primary font-label font-bold px-5 py-3 rounded-lg text-center mt-2"
-          >
-            Brezplačen ogled
+            Kontakt
           </a>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" class="pt-20">
+    <main id="main-content" class="pt-[72px]">
       <slot />
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-on-primary px-8 md:px-12 py-16">
+    <footer class="bg-zinc-100 w-full py-12 border-t border-zinc-200">
       <div
-        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10"
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 gap-8"
       >
-        <div class="space-y-3">
-          <p
-            class="font-headline font-black text-secondary text-xl uppercase tracking-widest"
-          >
-            Aleš Jelnikar
-          </p>
-          <p class="font-body text-on-primary/70 text-sm max-w-xs">
-            Certificiran monter VELUX strešnih oken z več kot 15 leti izkušenj.
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <span class="font-headline font-extrabold text-zinc-900 text-xl tracking-tighter uppercase">ALEŠ JELNIKAR</span>
+          <p class="font-body text-sm uppercase tracking-widest text-zinc-500">
+            © {new Date().getFullYear()} Aleš Jelnikar. Vse pravice pridržane.
           </p>
         </div>
-        <nav class="flex flex-wrap gap-6">
+        <nav class="flex flex-wrap justify-center gap-6">
           <a
             href="#storitve"
-            class="font-body text-on-primary/70 text-sm hover:text-on-primary transition-colors"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Storitve</a
           >
           <a
             href="#galerija"
-            class="font-body text-on-primary/70 text-sm hover:text-on-primary transition-colors"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Galerija</a
           >
           <a
-            href="#ocene"
-            class="font-body text-on-primary/70 text-sm hover:text-on-primary transition-colors"
-            >Ocene</a
+            href="#o-nas"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
+            >O nas</a
           >
           <a
             href="#kontakt"
-            class="font-body text-on-primary/70 text-sm hover:text-on-primary transition-colors"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Kontakt</a
           >
         </nav>
-        <p class="font-body text-on-primary/50 text-sm">
-          © {new Date().getFullYear()} Aleš Jelnikar. Vse pravice pridržane.
-        </p>
       </div>
     </footer>
+
+    <!-- Mobile FAB: tap to call -->
+    <a
+      href="tel:031556508"
+      class="fixed bottom-6 right-6 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center md:hidden z-[100] active:scale-90 transition-transform"
+      aria-label="Pokličite nas"
+    >
+      <span class="material-symbols-outlined text-3xl" aria-hidden="true">call</span>
+    </a>
 
     <script>
       // Mobile menu toggle
