@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Gallery from '../components/Gallery.astro';
+import About from '../components/About.astro';
+import Reviews from '../components/Reviews.astro';
+import Contact from '../components/Contact.astro';
+import { getProjekti, getReviews, urlFor } from '../lib/sanity.ts';
+
+const [rawProjekti, reviews] = await Promise.all([getProjekti(), getReviews()]);
+
+const projects = rawProjekti.map((p) => ({
+  _id: p._id,
+  title: p.title,
+  afterUrl: urlFor(p.imageAfter).width(800).height(600).auto('format').url(),
+  afterAlt: p.imageAfter.alt,
+  beforeUrl: p.imageBefore
+    ? urlFor(p.imageBefore).width(800).height(600).auto('format').url()
+    : undefined,
+  beforeAlt: p.imageBefore?.alt,
+}));
+---
+
+<Layout>
+  <Hero />
+  <Services />
+  <Gallery projects={projects} />
+  <About />
+  <Reviews reviews={reviews} />
+  <Contact />
+</Layout>

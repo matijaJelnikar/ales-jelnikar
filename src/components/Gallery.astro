@@ -1,0 +1,189 @@
+---
+interface Project {
+  _id: string;
+  title: string;
+  afterUrl: string;
+  afterAlt?: string;
+  beforeUrl?: string;
+  beforeAlt?: string;
+}
+
+const { projects = [] } = Astro.props as { projects: Project[] };
+
+// Placeholder projects shown when no Sanity content exists yet
+const placeholders: Project[] = [
+  {
+    _id: 'ph1',
+    title: 'Mansarda z VELUX okni',
+    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_Ogd_yRSTjiyU3f8pW49w4KciJXvchxB8nDotE11b8bLea2rJD9ThRBaH3JbrVmiffqcy-UT7AhmTjJ5j1y-0TAitpjfkeJOcxRHNKU4EQKezXtuofARrULrDn-XcFtMjFY-F9JWskrV7c52sjV4h6Yh1m5GXP7spk2HAEYKqhFNiMtxiq60uGj9LkjpBQDevNW8rMHY90YSEeY1FNywHIZBDyj9qd3Kq0AK2p17wiQ9-c4CUCQvQ--Xcf1YHTAXydIJqimxgSvAU',
+  },
+  {
+    _id: 'ph2',
+    title: 'Strešno okno v beli mansardi',
+    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCI2wJPEAwmSVpSN6KnluO3PXkVWX-r7OQNp1Fe6255rFqFPYGkDeUxSgwIfvir6YMytGwj7EM3N3e7uyhZ_R91sq3Hd1NRa2UdxVAs-Jk8wi_3z1cSyjKmUVjVy_nI8BM0yurmBTz3pIdH92pwzHQYL4Uxx4WxmTks8gt8zq4X2yYIfN9XT9SulO1PTxVUbYcXlsuKw6DgOEGCQpVPUzunW8ExkcyFYgEN9CkWH5wUNTgVAq3VGfiuEAHcO4bFa02tXPWljKp8BA_V',
+  },
+  {
+    _id: 'ph3',
+    title: 'Kuhinja s strešnimi okni',
+    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB5xdmMYC92A13rjRFQbNyO2edWy7Y09YrJUfVBotPb8f7vHu1UHTXcWGeH9LcjNYsDIxXIP4nB6PW9jbCHMzFtJxHZDVsTYuPu5ERkWuNRtMm2gW5j-WqpaVCx-A3oV5pUH14mmoMBsC-J7O7g4bBGfnWqrzdffXquXPQt9iBQwuZD__NWFeTMuZts-npc06ovZPsx0uespL66EMFdqEGsYX27bUroOllTyHvF4O77shFA__DGexNFDbF93QKHYW1RzPBJqiU2jYVq',
+  },
+  {
+    _id: 'ph4',
+    title: 'Kopalnica z naravno svetlobo',
+    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDBCn2rVjMzaTt2cOet49z0_gZnwALvsjQ59GAwo34rLO4s5eK0K3ZFUYhfo5hyHLjw8CPTIsanUteVyFI7mw1iXPJ4vfDPqzMfO1LDen1QuLN7HKjxsR4mwyQmOnDhHLzsp66YdDpLxO1b2fWzN0OdRnYzPet5155BMlxH90MW5g-l7qkkH-9kHGJOxkZfJPpYj9qm9Rp617JBNn9SUD1Y2u-PcdXEfebwhHVf5km00Eogbi2jdVSxKVc_TpSI5eDKZs9idk29Zi6',
+  },
+];
+
+const displayProjects = projects.length > 0 ? projects : placeholders;
+---
+
+<section id="galerija" class="py-24 md:py-32 px-6 md:px-24 bg-surface-container-lowest overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
+      <div class="space-y-4">
+        <span class="font-label text-secondary font-bold uppercase tracking-widest text-sm">Portfolio</span>
+        <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary">Naši Projekti</h2>
+      </div>
+      <p class="font-body text-on-surface-variant max-w-xs text-sm">
+        Prebrskajte med našimi zadnjimi vgradnjami. Tam kjer je mogoče, povlecite ločilo za primerjavo pred/po.
+      </p>
+    </div>
+
+    <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {displayProjects.map((project, i) => (
+        <div class="group space-y-3" data-gallery-item data-index={i}>
+          {project.beforeUrl ? (
+            /* Before/after comparison slider */
+            <div
+              class="comparison-slider relative overflow-hidden rounded-xl shadow-lg cursor-col-resize select-none"
+              style="aspect-ratio: 4/3;"
+              data-comparison
+            >
+              <!-- After image (base layer) -->
+              <img
+                src={project.afterUrl}
+                alt={project.afterAlt ?? `${project.title} – po vgradnji`}
+                class="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              <!-- Before image (clipped layer) -->
+              <div
+                class="before-clip absolute inset-0"
+                style="clip-path: inset(0 50% 0 0);"
+              >
+                <img
+                  src={project.beforeUrl}
+                  alt={project.beforeAlt ?? `${project.title} – pred vgradnjo`}
+                  class="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <!-- "Pred" label -->
+                <span class="absolute top-3 left-3 bg-black/60 text-white text-xs font-label font-bold uppercase tracking-widest px-2 py-1 rounded">
+                  Pred
+                </span>
+              </div>
+              <!-- "Po" label -->
+              <span class="absolute top-3 right-3 bg-primary/80 text-on-primary text-xs font-label font-bold uppercase tracking-widest px-2 py-1 rounded">
+                Po
+              </span>
+              <!-- Divider line + handle -->
+              <div
+                class="comparison-handle absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_8px_rgba(0,0,0,0.4)] pointer-events-none"
+                style="left: 50%; transform: translateX(-50%);"
+              >
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 bg-white rounded-full shadow-lg flex items-center justify-center pointer-events-auto cursor-col-resize">
+                  <span class="text-primary font-bold text-sm leading-none">⟨⟩</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* After-only image */
+            <div class="relative overflow-hidden rounded-xl shadow-lg" style="aspect-ratio: 4/3;">
+              <img
+                src={project.afterUrl}
+                alt={project.afterAlt ?? `${project.title} – po vgradnji`}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <span class="absolute top-3 right-3 bg-primary/80 text-on-primary text-xs font-label font-bold uppercase tracking-widest px-2 py-1 rounded">
+                Po
+              </span>
+            </div>
+          )}
+          <p class="font-headline font-semibold text-primary text-sm">{project.title}</p>
+        </div>
+      ))}
+    </div>
+
+    {displayProjects.length > 4 && (
+      <div id="gallery-load-more" class="flex justify-center mt-10">
+        <button
+          id="load-more-btn"
+          class="inline-flex items-center gap-2 bg-primary text-on-primary font-label font-bold px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors active:scale-95 duration-150"
+        >
+          Prikaži več
+          <span class="material-symbols-outlined text-base" aria-hidden="true">expand_more</span>
+        </button>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  const INITIAL = 4;
+
+  // Hide items beyond the initial count
+  const allItems = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
+  allItems.forEach((item) => {
+    if (Number(item.dataset.index) >= INITIAL) {
+      item.style.display = 'none';
+    }
+  });
+
+  // Load more button
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreWrapper = document.getElementById('gallery-load-more');
+  if (loadMoreBtn && loadMoreWrapper) {
+    let shown = INITIAL;
+    loadMoreBtn.addEventListener('click', () => {
+      const hidden = Array.from(allItems).filter((el) => el.style.display === 'none');
+      hidden.slice(0, INITIAL).forEach((el) => { el.style.display = ''; });
+      shown += INITIAL;
+      if (shown >= allItems.length) {
+        loadMoreWrapper.style.display = 'none';
+      }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-comparison]').forEach((slider) => {
+    const beforeClip = slider.querySelector<HTMLElement>('.before-clip');
+    const handle = slider.querySelector<HTMLElement>('.comparison-handle');
+    if (!beforeClip || !handle) return;
+
+    let dragging = false;
+
+    const setPosition = (clientX: number) => {
+      const rect = slider.getBoundingClientRect();
+      const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+      const pct = (x / rect.width) * 100;
+      beforeClip.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = `${pct}%`;
+    };
+
+    slider.addEventListener('mousedown', (e) => {
+      dragging = true;
+      setPosition(e.clientX);
+    });
+    window.addEventListener('mouseup', () => { dragging = false; });
+    window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+
+    slider.addEventListener('touchstart', (e) => {
+      dragging = true;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+    window.addEventListener('touchmove', (e) => {
+      if (dragging) setPosition(e.touches[0].clientX);
+    }, { passive: true });
+  });
+</script>
