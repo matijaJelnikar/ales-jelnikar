@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
@@ -74,7 +73,6 @@ export const POST: APIRoute = async ({ request }) => {
     return json500('Pošiljanje ni uspelo. Prosimo, pokličite nas neposredno.');
   }
 
-  const resend = new Resend(apiKey);
   const toEmail = import.meta.env.CONTACT_EMAIL ?? 'info@alesjelnikar.si';
 
   const html = `
@@ -89,13 +87,26 @@ export const POST: APIRoute = async ({ request }) => {
   `;
 
   try {
-    await resend.emails.send({
-      from: 'Spletna stran <noreply@alesjelnikar.si>',
-      to: toEmail,
-      replyTo: email,
-      subject: `Novo povpraševanje od ${ime.replace(/[\r\n]/g, '')}`,
-      html,
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Spletna stran <noreply@alesjelnikar.si>',
+        to: toEmail,
+        reply_to: email,
+        subject: `Novo povpraševanje od ${ime.replace(/[\r\n]/g, '')}`,
+        html,
+      }),
     });
+
+    if (!res.ok) {
+      const err = await res.text();
+      console.error('[contact] Resend API napaka:', err);
+      return json500('Napaka pri pošiljanju. Prosimo, pokličite nas neposredno.');
+    }
 
     return Response.json(
       { message: 'Sporočilo je bilo uspešno poslano. Odgovorili vam bomo v najkrajšem možnem času.' },

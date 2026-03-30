@@ -18,7 +18,6 @@
     "@sanity/image-url": "^2.0.3",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.8",
-    "resend": "^6.9.4",
     "sanity": "^5.18.0",
     "tailwindcss": "^4.2.2"
   }
