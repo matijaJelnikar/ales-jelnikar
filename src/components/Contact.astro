@@ -224,12 +224,12 @@
         "hidden",
         "bg-error-container",
         "text-on-error-container",
-        "bg-primary-fixed",
-        "text-on-primary-fixed",
+        "bg-green-100",
+        "text-green-800",
       );
 
       if (res.ok) {
-        statusEl.classList.add("bg-primary-fixed", "text-on-primary-fixed");
+        statusEl.classList.add("bg-green-100", "text-green-800");
         statusEl.textContent =
           json.message ?? "Sporočilo je bilo uspešno poslano!";
         form.reset();
