@@ -10,35 +10,7 @@ interface Project {
 
 const { projects = [] } = Astro.props as { projects: Project[] };
 
-// Placeholder projects shown when no Sanity content exists yet
-const placeholders: Project[] = [
-  {
-    _id: 'ph1',
-    title: 'Mansarda z VELUX okni',
-    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxOjYxS_ROFmSjCvaU85GIx75P8b083Mf_mZ_02iAz0CrA6fULS727jrgaRUExa76kszJFyrqwcjIOkubbfNdZnqiekccBpZH3ulyqG14cAPeSgn-kz1m1sbcjYexn7s5Kq4cgUHqp4ZT4TE3KV5NmN_-EXYrSRp9ebtFnbIyw5ZeYOJ3rY8-QVHKdS5-sCMQrsoTVKYwGWWWfq1DH43ADqNqBSp4UROu6VFDdmiG3RTVBg9mnXWLs_3Sb1AiDnFoemp4PjiFEEtbM',
-    afterAlt: 'Ljubljana, 2023',
-  },
-  {
-    _id: 'ph2',
-    title: 'Strešno okno v beli mansardi',
-    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6HESHAjvQrr3Bzz-m0T5tTYYHRYQqVJzJYBNPguyedO9UzV1ak-9-6HIoGaodnqib-Fnr8W6ZqVTJbHhZn8sH2y6G5AkF-xo9v-YUIHSZNLLI6u_iq0EF9_Z30f_WIokSkbG7J2plYN3nEmSq6iSDndNDHhJBY5xDqWrtqdIPFu5TYVZ1rXbXvo3kVF_OLK0XX8PigGqJcpDd2BiXv7o7g7xN_AtfoNg1dwg0kaXz1-u9drQjY8v49M19sx-Hym0pYqMNbSy45EQe',
-    afterAlt: 'Kranj, 2023',
-  },
-  {
-    _id: 'ph3',
-    title: 'Kuhinja s strešnimi okni',
-    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB4wKQuSGLBR3bBTf5vgCGLnf6vpTXP9Svjyyq-jzPiOg97OAFT01gFFPuk0p2uB5iJVjn5-ZoTfZZbyS7LdBILu2xGWwHVcgywKYa1ujYgnQfBVZQHdSaq192DyWaVlJa-Iho9Aj1tVRNYpOG3YkxAlDMaBcAYdMvY0p7O70wSxH_uO0lNAxGTZV3x4uKR-40yvMPTw0lWu-mR7zp4SfQM2B6eH2e42vEmExjkHCL94qr4WHlUP5e1hEqwEMDYZoXQNmLZXiWAc1Qa',
-    afterAlt: 'Celje, 2024',
-  },
-  {
-    _id: 'ph4',
-    title: 'Kopalnica z naravno svetlobo',
-    afterUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB0YEVAhLJDXtYv308TAegOJOoV5UrepmKzh0bGeEPdVEZTxGOqYe90hgTE4DW_BoKckZzvTa1gRpkM-0Kv8aDvlxFM0H7mFjDNUTBBxukbBMNkSobOmkAdRECywHXE5W1nkPFHn6taGHZ8ciPZsKjabEVJVWQVlSb7H2Ht0eqKEr6Twic8EchsLcPw-XazPrijCk0CgGl4l1qV8ZRbTGZuTsui9KZUeJv3lRd3QmdPldjxaJNR330PWXXUpyUYK73GckSgS973sGyv',
-    afterAlt: 'Maribor, 2024',
-  },
-];
-
-const displayProjects = projects.length > 0 ? projects : placeholders;
+const displayProjects = projects;
 ---
 
 <section id="galerija" class="py-24 bg-surface">
@@ -48,6 +20,11 @@ const displayProjects = projects.length > 0 ? projects : placeholders;
       <p class="text-secondary max-w-xl mx-auto">Oglejte si nekaj naših zadnjih montaž po celotni Sloveniji.</p>
     </div>
 
+    {displayProjects.length === 0 && (
+      <p class="text-center text-secondary py-12">Galerija projektov bo kmalu na voljo.</p>
+    )}
+
+    {displayProjects.length > 0 && (
     <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {displayProjects.map((project, i) => (
         <div class="group" data-gallery-item data-index={i}>
@@ -110,6 +87,7 @@ const displayProjects = projects.length > 0 ? projects : placeholders;
         </div>
       ))}
     </div>
+    )}
 
     {displayProjects.length > 4 && (
       <div id="gallery-load-more" class="flex justify-center mt-10">
