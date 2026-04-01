@@ -3,8 +3,10 @@ interface Project {
   _id: string;
   title: string;
   afterUrl: string;
+  afterUrlSmall: string;
   afterAlt?: string;
   beforeUrl?: string;
+  beforeUrlSmall?: string;
   beforeAlt?: string;
 }
 
@@ -37,6 +39,8 @@ const displayProjects = projects;
             >
               <!-- After image (base layer) -->
               <img
+                srcset={`${project.afterUrlSmall} 360w, ${project.afterUrl} 640w`}
+                sizes="(max-width: 767px) calc(100vw - 3rem), calc(50vw - 2rem)"
                 src={project.afterUrl}
                 alt={project.afterAlt ?? `${project.title} – po vgradnji`}
                 class="absolute inset-0 w-full h-full object-cover"
@@ -48,6 +52,8 @@ const displayProjects = projects;
                 style="clip-path: inset(0 50% 0 0);"
               >
                 <img
+                  srcset={`${project.beforeUrlSmall} 360w, ${project.beforeUrl} 640w`}
+                  sizes="(max-width: 767px) calc(100vw - 3rem), calc(50vw - 2rem)"
                   src={project.beforeUrl}
                   alt={project.beforeAlt ?? `${project.title} – pred vgradnjo`}
                   class="absolute inset-0 w-full h-full object-cover"
@@ -74,6 +80,8 @@ const displayProjects = projects;
             /* After-only image with hover overlay */
             <div class="relative overflow-hidden shadow-sm bg-zinc-200" style="aspect-ratio: 4/3;">
               <img
+                srcset={`${project.afterUrlSmall} 360w, ${project.afterUrl} 640w`}
+                sizes="(max-width: 767px) calc(100vw - 3rem), calc(50vw - 2rem)"
                 src={project.afterUrl}
                 alt={project.afterAlt ?? `${project.title} – po vgradnji`}
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"

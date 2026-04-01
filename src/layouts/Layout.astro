@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import { Image } from "astro:assets";
+import faviconImg from "../assets/favicon.png";
 
 interface Props {
   title?: string;
@@ -53,7 +55,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
@@ -62,7 +64,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         rel="stylesheet"
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -103,7 +105,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     >
       <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
         <a href="/" class="flex items-center gap-3">
-          <img src="/favicon.png" alt="AJel logo" class="h-8 w-8" />
+          <Image src={faviconImg} width={32} height={32} alt="AJel logo" class="h-8 w-8" />
           <span class="font-headline font-black text-zinc-900 text-xl tracking-tighter uppercase">
             AJel - VELUX
           </span>

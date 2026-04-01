@@ -13,10 +13,14 @@ const [rawProjekti, reviews] = await Promise.all([getProjekti(), getReviews()]);
 const projects = rawProjekti.map((p) => ({
   _id: p._id,
   title: p.title,
-  afterUrl: urlFor(p.imageAfter).width(800).height(600).auto('format').url(),
+  afterUrl: urlFor(p.imageAfter).width(640).height(480).auto('format').url(),
+  afterUrlSmall: urlFor(p.imageAfter).width(360).height(270).auto('format').url(),
   afterAlt: p.imageAfter.alt,
   beforeUrl: p.imageBefore
-    ? urlFor(p.imageBefore).width(800).height(600).auto('format').url()
+    ? urlFor(p.imageBefore).width(640).height(480).auto('format').url()
+    : undefined,
+  beforeUrlSmall: p.imageBefore
+    ? urlFor(p.imageBefore).width(360).height(270).auto('format').url()
     : undefined,
   beforeAlt: p.imageBefore?.alt,
 }));
