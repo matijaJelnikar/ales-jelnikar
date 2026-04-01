@@ -87,170 +87,34 @@
         </div>
       </div>
 
-      <!-- Right: contact form -->
-      <div class="lg:w-2/3 bg-white p-8 md:p-12 shadow-2xl">
-        <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-2">
-            <label
-              for="ime"
-              class="text-xs font-bold uppercase tracking-widest text-secondary"
-            >
-              Ime in priimek <span aria-label="obvezno">*</span>
-            </label>
-            <input
-              id="ime"
-              name="ime"
-              type="text"
-              required
-              maxlength="100"
-              placeholder="Vpišite vaše ime"
-              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
-            />
-          </div>
-
-          <div class="space-y-2">
-            <label
-              for="telefon"
-              class="text-xs font-bold uppercase tracking-widest text-secondary"
-            >
-              Telefon
-            </label>
-            <input
-              id="telefon"
-              name="telefon"
-              type="tel"
-              maxlength="20"
-              placeholder="041 000 000"
-              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
-            />
-          </div>
-
-          <div class="space-y-2 md:col-span-2">
-            <label
-              for="email"
-              class="text-xs font-bold uppercase tracking-widest text-secondary"
-            >
-              E-naslov <span aria-label="obvezno">*</span>
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              maxlength="200"
-              placeholder="vas@email.com"
-              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50"
-            />
-          </div>
-
-          <div class="space-y-2 md:col-span-2">
-            <label
-              for="opis"
-              class="text-xs font-bold uppercase tracking-widest text-secondary"
-            >
-              Opis dela <span aria-label="obvezno">*</span>
-            </label>
-            <textarea
-              id="opis"
-              name="opis"
-              required
-              rows="4"
-              maxlength="2000"
-              placeholder="Opišite vaše želje ali težave z okni..."
-              class="w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50 resize-none"
-            ></textarea>
-          </div>
-
-          <!-- Honeypot — hidden from real users, catches bots -->
-          <input
-            type="text"
-            name="website"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-            class="hidden"
-          />
-
-          <!-- Status message -->
-          <div
-            id="form-status"
-            role="alert"
-            aria-live="polite"
-            class="hidden text-sm font-body px-4 py-3 md:col-span-2"
-          >
-          </div>
-
-          <div class="md:col-span-2 pt-4">
-            <button
-              type="submit"
-              id="submit-btn"
-              class="w-full bg-primary text-on-primary font-bold py-5 hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest"
-            >
-              Pošljite povpraševanje
-            </button>
-          </div>
-        </form>
+      <!-- Right: inquiry CTA -->
+      <div class="lg:w-2/3 bg-white p-8 md:p-12 shadow-2xl flex flex-col justify-center">
+        <span class="material-symbols-outlined text-primary text-5xl mb-6" aria-hidden="true">edit_note</span>
+        <h3 class="font-headline text-2xl font-extrabold mb-3">Pošljite podrobno povpraševanje</h3>
+        <p class="text-secondary leading-relaxed mb-6">
+          Izpolnite kratek obrazec z vsemi potrebnimi podatki. Aleš bo na podlagi vaših odgovorov pripravil natančen predračun — brez nepotrebnih klicev.
+        </p>
+        <ul class="space-y-2 mb-10 text-sm text-secondary">
+          <li class="flex gap-2 items-center">
+            <span class="material-symbols-outlined text-primary text-base shrink-0" aria-hidden="true">check_circle</span>
+            Nova montaža strešnega okna VELUX
+          </li>
+          <li class="flex gap-2 items-center">
+            <span class="material-symbols-outlined text-primary text-base shrink-0" aria-hidden="true">check_circle</span>
+            Servis ali popravilo obstoječega okna
+          </li>
+          <li class="flex gap-2 items-center">
+            <span class="material-symbols-outlined text-primary text-base shrink-0" aria-hidden="true">check_circle</span>
+            Odgovor v najkrajšem možnem času
+          </li>
+        </ul>
+        <a
+          href="/povprasevanje"
+          class="inline-block bg-primary text-on-primary font-bold py-5 text-center hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest"
+        >
+          Pošlji povpraševanje
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const statusEl = document.getElementById("form-status") as HTMLDivElement;
-  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Pošiljanje...";
-
-    const data = Object.fromEntries(new FormData(form));
-
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        signal: controller.signal,
-      });
-      clearTimeout(timeout);
-      const json = await res.json();
-
-      statusEl.classList.remove(
-        "hidden",
-        "bg-error-container",
-        "text-on-error-container",
-        "bg-green-100",
-        "text-green-800",
-      );
-
-      if (res.ok) {
-        statusEl.classList.add("bg-green-100", "text-green-800");
-        statusEl.textContent =
-          json.message ?? "Sporočilo je bilo uspešno poslano!";
-        form.reset();
-      } else {
-        statusEl.classList.add("bg-error-container", "text-on-error-container");
-        statusEl.textContent =
-          json.message ?? "Prišlo je do napake. Prosimo, poskusite znova.";
-      }
-    } catch (err) {
-      clearTimeout(timeout);
-      statusEl.classList.remove("hidden", "bg-error-container");
-      statusEl.classList.add("bg-error-container", "text-on-error-container");
-      statusEl.textContent =
-        err instanceof Error && err.name === "AbortError"
-          ? "Zahtevek je trajal predolgo. Prosimo, poskusite znova."
-          : "Napaka pri pošiljanju. Preverite internetno povezavo.";
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Pošljite povpraševanje";
-      statusEl.classList.remove("hidden");
-      statusEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-  });
-</script>

@@ -1,0 +1,518 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const inputCls = "w-full bg-surface-container border-none focus:outline-none focus:ring-2 focus:ring-primary py-4 px-4 text-on-surface placeholder:text-secondary/50";
+const labelCls = "text-xs font-bold uppercase tracking-widest text-secondary";
+const radioCls = "block px-4 py-2.5 border border-outline-variant text-sm font-medium transition-colors select-none peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary hover:border-primary cursor-pointer";
+const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4 pb-2 border-b border-outline-variant/40 w-full block";
+---
+
+<Layout
+  title="Povpraševanje – Aleš Jelnikar"
+  description="Pošljite povpraševanje za montažo ali servis strešnega okna VELUX. Izpolnite obrazec in kontaktirali vas bomo v najkrajšem možnem času."
+>
+  <div class="bg-surface-container-low min-h-screen py-16">
+    <div class="container mx-auto px-6 max-w-3xl">
+
+      <a href="/" class="inline-flex items-center gap-1 text-secondary hover:text-primary transition-colors mb-10 text-sm font-medium">
+        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
+        Nazaj na domačo stran
+      </a>
+
+      <div class="mb-10">
+        <h1 class="font-headline text-4xl md:text-5xl font-extrabold mb-4 text-on-surface">Pošljite povpraševanje</h1>
+        <p class="text-secondary text-lg leading-relaxed">
+          Izpolnite obrazec in pripravil bom natančen predračun. Bolj podrobno kot opišete situacijo, bolj točna bo ponudba.
+        </p>
+      </div>
+
+      <div class="bg-white shadow-2xl">
+        <!-- Tabs -->
+        <div class="flex border-b border-outline-variant" role="tablist">
+          <button
+            id="tab-montaza"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-montaza"
+            class="flex-1 md:flex-none px-6 py-4 font-bold text-sm uppercase tracking-wider border-b-2 border-primary text-primary -mb-px bg-white transition-colors cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-base align-middle mr-1" aria-hidden="true">construction</span>
+            Nova montaža
+          </button>
+          <button
+            id="tab-servis"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-servis"
+            class="flex-1 md:flex-none px-6 py-4 font-bold text-sm uppercase tracking-wider border-b-2 border-transparent text-secondary hover:text-on-surface -mb-px bg-white transition-colors cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-base align-middle mr-1" aria-hidden="true">handyman</span>
+            Servis
+          </button>
+        </div>
+
+        <!-- ======================== PANEL: NOVA MONTAŽA ======================== -->
+        <div id="panel-montaza" role="tabpanel">
+          <form id="form-montaza" novalidate class="p-8 md:p-12 space-y-10">
+
+            <!-- Dimenzije -->
+            <fieldset>
+              <legend class={legendCls}>Dimenzije odprtine med špirovci</legend>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label for="sirina" class={labelCls}>Širina (cm) <span aria-label="obvezno">*</span></label>
+                  <input id="sirina" name="sirina" type="number" required min="1" max="999" placeholder="npr. 74" class={inputCls} />
+                </div>
+                <div class="space-y-2">
+                  <label for="visina" class={labelCls}>Višina (cm) <span aria-label="obvezno">*</span></label>
+                  <input id="visina" name="visina" type="number" required min="1" max="999" placeholder="npr. 118" class={inputCls} />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Streha -->
+            <fieldset>
+              <legend class={legendCls}>Streha in notranjost</legend>
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <label for="vrsta_kritine" class={labelCls}>Vrsta kritine <span aria-label="obvezno">*</span></label>
+                  <div class="relative">
+                    <select id="vrsta_kritine" name="vrsta_kritine" required class={`${inputCls} appearance-none pr-10`}>
+                      <option value="">Izberite vrsto kritine</option>
+                      <option value="opecna">Opečna (glinaste ploščice)</option>
+                      <option value="betonska">Betonska (betonske ploščice)</option>
+                      <option value="salonitna">Salonitna (valovita plošča)</option>
+                      <option value="plocevina">Pločevina</option>
+                      <option value="bitumenska">Bitumenska (ravna streha)</option>
+                      <option value="drugo">Drugo</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none" aria-hidden="true">expand_more</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <p class={labelCls}>Notranja obdelava <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Notranja obdelava">
+                    {[
+                      { value: 'gips', label: 'Gips' },
+                      { value: 'les', label: 'Les' },
+                      { value: 'ni', label: 'Ni obdelano (prazna podstreha)' },
+                    ].map(({ value, label }) => (
+                      <label>
+                        <input type="radio" name="notranja_obdelava" value={value} class="sr-only peer" required />
+                        <span class={radioCls}>{label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Obstoječe stanje -->
+            <fieldset>
+              <legend class={legendCls}>Obstoječe stanje</legend>
+              <div class="space-y-6">
+                <div class="space-y-3">
+                  <p class={labelCls}>Ali je v odprtini staro okno? <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Staro okno">
+                    <label>
+                      <input type="radio" name="staro_okno" value="da" id="staro_okno_da" class="sr-only peer" required />
+                      <span class={radioCls}>Da, okno je</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="staro_okno" value="ne" id="staro_okno_ne" class="sr-only peer" />
+                      <span class={radioCls}>Ne, odprtina je prazna</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Conditional: old window dims -->
+                <div id="staro-dims" class="hidden space-y-3 p-4 bg-surface-container-low border-l-2 border-primary">
+                  <p class={labelCls}>Zunanja dimenzija okvirja starega okna (cm)</p>
+                  <p class="text-xs text-secondary/70">Vidite jo ko odprete notranjo oblogo okna.</p>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                      <label for="staro_sirina" class={labelCls}>Širina (cm)</label>
+                      <input id="staro_sirina" name="staro_sirina" type="number" min="1" max="999" placeholder="npr. 78" class={inputCls} />
+                    </div>
+                    <div class="space-y-2">
+                      <label for="staro_visina" class={labelCls}>Višina (cm)</label>
+                      <input id="staro_visina" name="staro_visina" type="number" min="1" max="999" placeholder="npr. 122" class={inputCls} />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <p class={labelCls}>Tip dela <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Tip dela">
+                    <label>
+                      <input type="radio" name="tip_dela" value="prazna" class="sr-only peer" required />
+                      <span class={radioCls}>Prazna podstreha</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="tip_dela" value="soba" class="sr-only peer" />
+                      <span class={radioCls}>Soba z dokončanim stropom (treba odpreti)</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Višine (optional) -->
+            <fieldset>
+              <legend class={legendCls}>
+                Višine <span class="text-secondary font-normal normal-case tracking-normal">(neobvezno — za natančnejši predračun)</span>
+              </legend>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label for="visina_od_tal" class={labelCls}>Višina od tal do vrha okna (cm)</label>
+                  <input id="visina_od_tal" name="visina_od_tal" type="number" min="0" max="999" placeholder="npr. 220" class={inputCls} />
+                </div>
+                <div class="space-y-2">
+                  <label for="visina_parapeta" class={labelCls}>Višina parapetnega zidu (cm)</label>
+                  <input id="visina_parapeta" name="visina_parapeta" type="number" min="0" max="999" placeholder="npr. 30" class={inputCls} />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Vrsta okna -->
+            <fieldset>
+              <legend class={legendCls}>Katero okno želite</legend>
+              <div class="space-y-6">
+                <div class="space-y-3">
+                  <p class={labelCls}>Okvir <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Okvir">
+                    <label>
+                      <input type="radio" name="tip_okvirja" value="plastificirano" class="sr-only peer" required />
+                      <span class={radioCls}>Plastificirano (PVC)</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="tip_okvirja" value="leseno" class="sr-only peer" />
+                      <span class={radioCls}>Leseno</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <p class={labelCls}>Odpiranje <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Odpiranje">
+                    <label>
+                      <input type="radio" name="odpiranje" value="rocno" class="sr-only peer" required />
+                      <span class={radioCls}>Ročno</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="odpiranje" value="elektricno" class="sr-only peer" />
+                      <span class={radioCls}>Električno</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <p class={labelCls}>Zasteklitev <span aria-label="obvezno">*</span></p>
+                  <div class="flex flex-wrap gap-2" role="group" aria-label="Zasteklitev">
+                    <label>
+                      <input type="radio" name="zasteklitev" value="dvoslojno" class="sr-only peer" required />
+                      <span class={radioCls}>Dvoslojno</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="zasteklitev" value="troslojno" class="sr-only peer" />
+                      <span class={radioCls}>Troslojno</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Opombe -->
+            <div class="space-y-2">
+              <label for="opomba" class={labelCls}>Dodatne opombe</label>
+              <textarea id="opomba" name="opomba" rows="3" maxlength="2000"
+                placeholder="Karkoli dodatnega, kar bi pomagalo pri pripravi predračuna..."
+                class={`${inputCls} resize-none`}></textarea>
+            </div>
+
+            <!-- Kontakt -->
+            <fieldset>
+              <legend class={legendCls}>Kontaktni podatki</legend>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ime_m" class={labelCls}>Ime in priimek <span aria-label="obvezno">*</span></label>
+                  <input id="ime_m" name="ime" type="text" required maxlength="100" placeholder="Janez Novak" class={inputCls} />
+                </div>
+                <div class="space-y-2">
+                  <label for="telefon_m" class={labelCls}>Telefon <span aria-label="obvezno">*</span></label>
+                  <input id="telefon_m" name="telefon" type="tel" required maxlength="20" placeholder="041 000 000" class={inputCls} />
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label for="email_m" class={labelCls}>E-naslov</label>
+                  <input id="email_m" name="email" type="email" maxlength="200" placeholder="vas@email.com" class={inputCls} />
+                </div>
+              </div>
+            </fieldset>
+
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <div id="status-montaza" role="alert" aria-live="polite" class="hidden text-sm px-4 py-3"></div>
+
+            <button type="submit" id="submit-montaza"
+              class="w-full bg-primary text-on-primary font-bold py-5 hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest">
+              Pošlji povpraševanje
+            </button>
+          </form>
+        </div>
+
+        <!-- ======================== PANEL: SERVIS ======================== -->
+        <div id="panel-servis" role="tabpanel" class="hidden">
+          <form id="form-servis" novalidate class="p-8 md:p-12 space-y-10">
+
+            <!-- Podatki o oknu -->
+            <fieldset>
+              <legend class={legendCls}>Podatki o oknu</legend>
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <label for="starost_okna" class={labelCls}>Starost okna (leta) <span aria-label="obvezno">*</span></label>
+                  <input id="starost_okna" name="starost_okna" type="number" required min="0" max="100" placeholder="npr. 20" class={inputCls} />
+                </div>
+
+                <div class="space-y-2">
+                  <p class={labelCls}>Fotografija ploščice na krilu okna</p>
+                  <p class="text-xs text-secondary/70">Ploščica je vidna ko okno odprete. Na njej so zapisane tehnične specifikacije okna, ki pomagajo pri naročilu rezervnih delov.</p>
+                  <label for="foto" class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-outline-variant bg-surface-container cursor-pointer hover:border-primary transition-colors mt-2">
+                    <span class="material-symbols-outlined text-3xl text-secondary mb-1" aria-hidden="true">upload_file</span>
+                    <span class="text-sm text-secondary">Kliknite za nalaganje fotografije</span>
+                    <span class="text-xs text-secondary/60 mt-0.5">JPG, PNG, WebP – največ 5 MB</span>
+                    <input type="file" id="foto" name="foto" accept="image/*" class="sr-only" />
+                  </label>
+                  <div id="foto-preview" class="hidden mt-2">
+                    <img id="foto-preview-img" src="" alt="Predogled fotografije" class="max-h-48 object-contain border border-outline-variant" />
+                    <button type="button" id="foto-remove" class="block text-xs text-secondary hover:text-primary mt-1 transition-colors">
+                      Odstrani fotografijo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Opis težave -->
+            <fieldset>
+              <legend class={legendCls}>Opis težave</legend>
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <label for="opis_problema" class={labelCls}>Opis problema <span aria-label="obvezno">*</span></label>
+                  <textarea id="opis_problema" name="opis_problema" required rows="4" maxlength="2000"
+                    placeholder="Opišite težavo z oknom..."
+                    class={`${inputCls} resize-none`}></textarea>
+                </div>
+
+                <div class="space-y-2">
+                  <label for="kdaj_zamaka" class={labelCls}>Kdaj zamaka / pušča? <span aria-label="obvezno">*</span></label>
+                  <div class="relative">
+                    <select id="kdaj_zamaka" name="kdaj_zamaka" required class={`${inputCls} appearance-none pr-10`}>
+                      <option value="">Izberite...</option>
+                      <option value="pozimi">Samo pozimi</option>
+                      <option value="poleti">Samo poleti</option>
+                      <option value="celo_leto">Celo leto</option>
+                      <option value="ne_zamaka">Ne zamaka (druga težava)</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none" aria-hidden="true">expand_more</span>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Kontakt -->
+            <fieldset>
+              <legend class={legendCls}>Kontaktni podatki</legend>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ime_s" class={labelCls}>Ime in priimek <span aria-label="obvezno">*</span></label>
+                  <input id="ime_s" name="ime" type="text" required maxlength="100" placeholder="Janez Novak" class={inputCls} />
+                </div>
+                <div class="space-y-2">
+                  <label for="telefon_s" class={labelCls}>Telefon <span aria-label="obvezno">*</span></label>
+                  <input id="telefon_s" name="telefon" type="tel" required maxlength="20" placeholder="041 000 000" class={inputCls} />
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label for="email_s" class={labelCls}>E-naslov</label>
+                  <input id="email_s" name="email" type="email" maxlength="200" placeholder="vas@email.com" class={inputCls} />
+                </div>
+              </div>
+            </fieldset>
+
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <div id="status-servis" role="alert" aria-live="polite" class="hidden text-sm px-4 py-3"></div>
+
+            <button type="submit" id="submit-servis"
+              class="w-full bg-primary text-on-primary font-bold py-5 hover:opacity-90 active:scale-[0.98] transition-all uppercase tracking-widest">
+              Pošlji povpraševanje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // ── Tabs ──────────────────────────────────────────────────────────────────
+  const tabMontaza = document.getElementById('tab-montaza') as HTMLButtonElement;
+  const tabServis = document.getElementById('tab-servis') as HTMLButtonElement;
+  const panelMontaza = document.getElementById('panel-montaza') as HTMLDivElement;
+  const panelServis = document.getElementById('panel-servis') as HTMLDivElement;
+
+  function activateTab(tab: 'montaza' | 'servis') {
+    const isMontaza = tab === 'montaza';
+    tabMontaza.classList.toggle('border-primary', isMontaza);
+    tabMontaza.classList.toggle('text-primary', isMontaza);
+    tabMontaza.classList.toggle('border-transparent', !isMontaza);
+    tabMontaza.classList.toggle('text-secondary', !isMontaza);
+    tabMontaza.setAttribute('aria-selected', String(isMontaza));
+
+    tabServis.classList.toggle('border-primary', !isMontaza);
+    tabServis.classList.toggle('text-primary', !isMontaza);
+    tabServis.classList.toggle('border-transparent', isMontaza);
+    tabServis.classList.toggle('text-secondary', isMontaza);
+    tabServis.setAttribute('aria-selected', String(!isMontaza));
+
+    panelMontaza.classList.toggle('hidden', !isMontaza);
+    panelServis.classList.toggle('hidden', isMontaza);
+  }
+
+  tabMontaza.addEventListener('click', () => activateTab('montaza'));
+  tabServis.addEventListener('click', () => activateTab('servis'));
+
+  // ── Conditional: staro okno dims ─────────────────────────────────────────
+  const staroDims = document.getElementById('staro-dims') as HTMLDivElement;
+  document.querySelectorAll('input[name="staro_okno"]').forEach(input => {
+    input.addEventListener('change', () => {
+      staroDims.classList.toggle('hidden', (input as HTMLInputElement).value !== 'da');
+    });
+  });
+
+  // ── Photo preview ─────────────────────────────────────────────────────────
+  const fotoInput = document.getElementById('foto') as HTMLInputElement;
+  const fotoPreview = document.getElementById('foto-preview') as HTMLDivElement;
+  const fotoPreviewImg = document.getElementById('foto-preview-img') as HTMLImageElement;
+  const fotoRemove = document.getElementById('foto-remove') as HTMLButtonElement;
+
+  fotoInput.addEventListener('change', () => {
+    const file = fotoInput.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Fotografija je prevelika. Največja dovoljena velikost je 5 MB.');
+      fotoInput.value = '';
+      return;
+    }
+    fotoPreviewImg.src = URL.createObjectURL(file);
+    fotoPreview.classList.remove('hidden');
+  });
+
+  fotoRemove.addEventListener('click', () => {
+    fotoInput.value = '';
+    fotoPreviewImg.src = '';
+    fotoPreview.classList.add('hidden');
+  });
+
+  // ── Status helper ─────────────────────────────────────────────────────────
+  function showStatus(el: HTMLDivElement, ok: boolean, msg: string) {
+    el.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-error-container', 'text-on-error-container');
+    el.classList.add(ok ? 'bg-green-100' : 'bg-error-container', ok ? 'text-green-800' : 'text-on-error-container');
+    el.textContent = msg;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ── Montaža form ──────────────────────────────────────────────────────────
+  const formMontaza = document.getElementById('form-montaza') as HTMLFormElement;
+  const submitMontaza = document.getElementById('submit-montaza') as HTMLButtonElement;
+  const statusMontaza = document.getElementById('status-montaza') as HTMLDivElement;
+
+  formMontaza.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!formMontaza.checkValidity()) { formMontaza.reportValidity(); return; }
+    submitMontaza.disabled = true;
+    submitMontaza.textContent = 'Pošiljanje...';
+
+    const data = Object.fromEntries(new FormData(formMontaza));
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), 15000);
+
+    try {
+      const res = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, type: 'montaza' }),
+        signal: ctrl.signal,
+      });
+      clearTimeout(timeout);
+      const json = await res.json();
+      showStatus(statusMontaza, res.ok, json.message ?? (res.ok ? 'Poslano!' : 'Napaka.'));
+      if (res.ok) { formMontaza.reset(); staroDims.classList.add('hidden'); }
+    } catch (err) {
+      clearTimeout(timeout);
+      showStatus(statusMontaza, false, err instanceof Error && err.name === 'AbortError'
+        ? 'Zahtevek je trajal predolgo. Prosimo, poskusite znova.'
+        : 'Napaka pri pošiljanju. Preverite internetno povezavo.');
+    } finally {
+      submitMontaza.disabled = false;
+      submitMontaza.textContent = 'Pošlji povpraševanje';
+    }
+  });
+
+  // ── Servis form ───────────────────────────────────────────────────────────
+  const formServis = document.getElementById('form-servis') as HTMLFormElement;
+  const submitServis = document.getElementById('submit-servis') as HTMLButtonElement;
+  const statusServis = document.getElementById('status-servis') as HTMLDivElement;
+
+  formServis.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!formServis.checkValidity()) { formServis.reportValidity(); return; }
+    submitServis.disabled = true;
+    submitServis.textContent = 'Pošiljanje...';
+
+    const raw = Object.fromEntries(new FormData(formServis)) as Record<string, string>;
+    delete raw.foto;
+
+    const file = fotoInput.files?.[0];
+    if (file) {
+      try {
+        raw.foto_base64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = ev => resolve((ev.target!.result as string).split(',')[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+        raw.foto_naziv = file.name;
+      } catch {
+        showStatus(statusServis, false, 'Napaka pri branju fotografije. Poskusite znova.');
+        submitServis.disabled = false;
+        submitServis.textContent = 'Pošlji povpraševanje';
+        return;
+      }
+    }
+
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), 20000);
+
+    try {
+      const res = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...raw, type: 'servis' }),
+        signal: ctrl.signal,
+      });
+      clearTimeout(timeout);
+      const json = await res.json();
+      showStatus(statusServis, res.ok, json.message ?? (res.ok ? 'Poslano!' : 'Napaka.'));
+      if (res.ok) {
+        formServis.reset();
+        fotoInput.value = '';
+        fotoPreview.classList.add('hidden');
+      }
+    } catch (err) {
+      clearTimeout(timeout);
+      showStatus(statusServis, false, err instanceof Error && err.name === 'AbortError'
+        ? 'Zahtevek je trajal predolgo. Prosimo, poskusite znova.'
+        : 'Napaka pri pošiljanju. Preverite internetno povezavo.');
+    } finally {
+      submitServis.disabled = false;
+      submitServis.textContent = 'Pošlji povpraševanje';
+    }
+  });
+</script>

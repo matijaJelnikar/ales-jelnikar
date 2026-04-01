@@ -9,23 +9,43 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Large feature card -->
+      <!-- Large feature card: Servis (primary activity) -->
       <div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 flex flex-col justify-between group overflow-hidden relative border border-outline-variant/10">
         <div>
-          <span class="material-symbols-outlined text-primary text-4xl mb-6" aria-hidden="true">construction</span>
-          <h3 class="text-2xl font-bold font-headline mb-4">Klasična &amp; Panoramska okna</h3>
-          <p class="text-secondary leading-relaxed max-w-md">
-            Montaža vseh tipov VELUX strešnih oken, ki vašemu podstrešju vdihnejo novo življenje.
-            Izbirajte med ročnim ali električnim upravljanjem. Zagotavljamo 100-odstotno vodotesnost
-            z originalnimi obrobami za vse vrste kritin.
+          <span class="material-symbols-outlined text-primary text-4xl mb-6" aria-hidden="true">handyman</span>
+          <h3 class="text-2xl font-bold font-headline mb-4">Servis strešnih oken</h3>
+          <p class="text-secondary leading-relaxed max-w-md mb-6">
+            Strokovnjaki priporočajo preventivni servis strešnega okna vsakih 3 do 5 let. Pravočasno vzdrževanje podaljša življenjsko dobo okna in prepreči dražje posege.
           </p>
+
+          <div class="mb-6">
+            <h4 class="font-bold text-sm uppercase tracking-wider mb-3 text-primary">Preventivni servis (vsakih 3–5 let)</h4>
+            <ul class="text-secondary text-sm space-y-2 leading-relaxed">
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pregled in pritrditev obstoječih vijakov</li>
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Podmazovanje tečajev in premičnih delov</li>
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pregled zunanje obrobe in pretočnih kanalov</li>
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pri kondenzaciji na profilih: dodajanje izolativne pene na zunanje okenske profile, ki prepreči nastajanje kapljic</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-sm uppercase tracking-wider mb-3 text-primary">Sanacija (po 15–20 letih)</h4>
+            <ul class="text-secondary text-sm space-y-2 leading-relaxed">
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Menjava tesnilne mase okoli zasteklitve</li>
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Saniranje vijakov</li>
+              <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Zamenjava preperele pene na zunanjo obrobo pod strešniki — prepreči vdor vode pri dežju z vetrom</li>
+            </ul>
+          </div>
         </div>
-        <img
-          class="absolute -bottom-10 -right-10 w-64 h-64 object-cover grayscale opacity-10 group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-500"
-          alt="Panoramsko strešno okno v modernem podstrešju"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8bj6kYQn5h6LdzIfXs-rN2Mdt9XKvUXjXEOfnuAuF8n_cz0SXwYLjDGUIZi53nUQiZhDPTRzIks4h_drLQQ3R5IEmqt-QTycAt0Fhb4VPeswWU8LWiQNKnBBrOEQOx_h9XOptmYo2C5Fwt4pxvrX7C-M4zytxpiZRknOr7MMwUAzgEhrrzvAGEFgn5G-HmMpI-tv2-4TUIlLpm1lslhV65Ue9L_BDWOC7PUkPScrfJVv56ZYc696Nl7KTgKGfDOvbTGY9B8_AxPvi"
-          loading="lazy"
-        />
+      </div>
+
+      <!-- Montaža card -->
+      <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+        <span class="material-symbols-outlined text-primary text-3xl mb-4" aria-hidden="true">construction</span>
+        <h3 class="text-xl font-bold font-headline mb-2">Montaža strešnih oken</h3>
+        <p class="text-sm text-secondary">
+          Montaža vseh tipov VELUX strešnih oken — klasičnih, panoramskih in svetlobnikov. Ročno ali električno upravljanje, 100-odstotna vodotesnost z originalnimi obrobami.
+        </p>
       </div>
 
       <!-- Svetlobniki card -->
@@ -47,16 +67,16 @@
       </div>
 
       <!-- CTA strip -->
-      <div class="bg-primary text-on-primary p-8 md:col-span-3 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="bg-primary text-on-primary p-8 md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="text-center md:text-left">
-          <h3 class="text-2xl font-bold font-headline mb-2">Potrebujete servis obstoječih oken?</h3>
-          <p class="opacity-90">Izvajamo vzdrževalna dela, menjavo tesnil in popravila.</p>
+          <h3 class="text-2xl font-bold font-headline mb-2">Servis ali montaža?</h3>
+          <p class="opacity-90">Najprej pregledamo obstoječe okno — zamenjamo le, če je res potrebno.</p>
         </div>
         <a
-          href="#kontakt"
+          href="/povprasevanje"
           class="bg-white text-primary px-8 py-3 font-bold hover:bg-zinc-100 transition-colors shrink-0"
         >
-          Rezerviraj termin
+          Pošlji povpraševanje
         </a>
       </div>
     </div>

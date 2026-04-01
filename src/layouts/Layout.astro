@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = "Aleš Jelnikar – Vgradnja VELUX strešnih oken",
-  description = "Certificiran montažer VELUX strešnih oken. Profesionalna vgradnja, servis in vzdrževanje po celotni Sloveniji.",
+  title = "Aleš Jelnikar – Servis VELUX strešnih oken",
+  description = "Priporočen VELUX izvajalec. Profesionalen servis, vgradnja in vzdrževanje strešnih oken po celotni Sloveniji.",
   ogImage = "/og-image.jpg",
 } = Astro.props;
 
@@ -22,8 +22,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" href="/favicon.png" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="sl" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
@@ -41,17 +41,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="sl_SI" />
     <meta property="og:site_name" content="Aleš Jelnikar – VELUX" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- LocalBusiness JSON-LD -->
     <script type="application/ld+json">
@@ -59,7 +73,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Aleš Jelnikar – VELUX strešna okna",
-        "description": "Certificiran montažer VELUX strešnih oken. Profesionalna vgradnja, servis in vzdrževanje.",
+        "description": "Priporočen VELUX izvajalec. Profesionalna vgradnja, servis in vzdrževanje strešnih oken.",
         "url": "https://alesjelnikar.si",
         "telephone": "031556508",
         "email": "info@alesjelnikar.si",
@@ -97,22 +111,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
         <div class="hidden md:flex items-center gap-8">
           <a
-            href="#storitve"
+            href="/#storitve"
             class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >Storitve</a
           >
           <a
-            href="#galerija"
+            href="/#galerija"
             class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >Galerija</a
           >
           <a
-            href="#o-nas"
+            href="/#o-nas"
             class="text-zinc-600 font-medium hover:text-primary transition-colors"
             >O nas</a
           >
           <a
-            href="#kontakt"
+            href="/povprasevanje"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
+            >Povpraševanje</a
+          >
+          <a
+            href="/#kontakt"
             class="bg-primary text-on-primary px-6 py-2 font-bold hover:opacity-90 active:scale-95 duration-200 transition-all"
             >Kontakt</a
           >
@@ -137,22 +156,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       >
         <nav class="flex flex-col gap-4">
           <a
-            href="#storitve"
+            href="/#storitve"
             class="font-label font-semibold text-zinc-600 py-2"
             >Storitve</a
           >
           <a
-            href="#galerija"
+            href="/#galerija"
             class="font-label font-semibold text-zinc-600 py-2"
             >Galerija</a
           >
           <a
-            href="#o-nas"
+            href="/#o-nas"
             class="font-label font-semibold text-zinc-600 py-2"
             >O nas</a
           >
           <a
-            href="#kontakt"
+            href="/povprasevanje"
+            class="font-label font-semibold text-zinc-600 py-2"
+            >Povpraševanje</a
+          >
+          <a
+            href="/#kontakt"
             class="bg-primary text-on-primary font-label font-bold px-5 py-3 text-center mt-2"
           >
             Kontakt
@@ -178,22 +202,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
         <nav class="flex flex-wrap justify-center gap-6">
           <a
-            href="#storitve"
+            href="/#storitve"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Storitve</a
           >
           <a
-            href="#galerija"
+            href="/#galerija"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Galerija</a
           >
           <a
-            href="#o-nas"
+            href="/#o-nas"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >O nas</a
           >
           <a
-            href="#kontakt"
+            href="/povprasevanje"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
+            >Povpraševanje</a
+          >
+          <a
+            href="/#kontakt"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Kontakt</a
           >
