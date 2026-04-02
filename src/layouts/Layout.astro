@@ -7,6 +7,7 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  preloadImage?: string;
   schema?: string;
 }
 
@@ -14,6 +15,7 @@ const {
   title = "Servis VELUX strešnih oken – Aleš Jelnikar",
   description = "Servis in montaža VELUX strešnih oken v Ljubljani in osrednji Sloveniji. Priporočen izvajalec z 15+ leti izkušenj — preventivni servis, sanacija, vgradnja.",
   ogImage = "/favicon.png",
+  preloadImage,
   schema,
 } = Astro.props;
 
@@ -44,6 +46,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:locale" content="sl_SI" />
     <meta property="og:site_name" content="Aleš Jelnikar – VELUX" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -295,6 +305,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           </p>
         </div>
         <nav class="flex flex-wrap justify-center gap-6">
+          <a
+            href="/servis-velux"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
+            >Servis VELUX</a
+          >
+          <a
+            href="/montaza-velux"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
+            >Montaža VELUX</a
+          >
           <a
             href="/#storitve"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
