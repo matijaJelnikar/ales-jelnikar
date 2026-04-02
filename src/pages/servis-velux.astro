@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Reviews from '../components/Reviews.astro';
+import Contact from '../components/Contact.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Domov", "item": "https://alesjelnikar.si/" },
+        { "@type": "ListItem", "position": 2, "name": "Servis VELUX strešnih oken", "item": "https://alesjelnikar.si/servis-velux" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Koliko stane servis VELUX okna?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cena servisa VELUX okna je odvisna od obsega del in starosti okna. Za natančen predračun pošljite povpraševanje na alesjelnikar.si/povprasevanje." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako pogosto je potreben servis VELUX strešnega okna?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Strokovnjaki priporočajo preventivni servis VELUX strešnega okna vsakih 3 do 5 let. Po 15 do 20 letih je priporočena celovita sanacija." }
+        },
+        {
+          "@type": "Question",
+          "name": "Ali servirate vsa VELUX okna?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Da, servisiramo vse tipe VELUX strešnih oken — klasična, panoramska in svetlobnike, ne glede na starost okna." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kje v Sloveniji opravljate servis VELUX oken?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Servis VELUX oken opravljamo v osrednji Sloveniji: Ljubljana in okolica, Domžale, Kamnik, Grosuplje, Litija in Medvode." }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<Layout
+  title="Servis Velux strešnih oken – Aleš Jelnikar | Ljubljana in osrednja Slovenija"
+  description="Servis Velux strešnih oken v Ljubljani in osrednji Sloveniji. Preventivni servis, sanacija in popravila. Priporočen VELUX izvajalec z 15+ leti izkušenj."
+  schema={schema}
+>
+  <!-- Hero section -->
+  <section class="bg-surface-container-low py-20">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <a href="/" class="flex w-fit items-center gap-1 text-secondary hover:text-primary transition-colors mb-10 text-sm font-medium">
+        <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
+        Nazaj na domačo stran
+      </a>
+      <span class="inline-block bg-primary text-on-primary text-xs font-bold px-3 py-1 mb-6 tracking-widest uppercase">
+        Priporočen VELUX Izvajalec
+      </span>
+      <h1 class="font-headline text-4xl md:text-6xl font-extrabold text-on-surface leading-tight mb-6 tracking-tight">
+        Servis VELUX strešnih oken
+      </h1>
+      <p class="text-xl text-secondary leading-relaxed max-w-2xl mb-8">
+        Aleš Jelnikar je priporočen VELUX izvajalec, specializiran za servis strešnih oken VELUX. Servis opravljamo v Ljubljani, Domžalah, Kamniku, Grosupljem in po celotni osrednji Sloveniji — na vseh modelih VELUX oken.
+      </p>
+      <a
+        href="/povprasevanje?tab=servis"
+        class="bg-primary text-on-primary px-8 py-4 font-bold inline-flex items-center gap-2 hover:shadow-lg transition-all active:scale-95"
+      >
+        Naročite servis
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Service detail -->
+  <section class="py-20 bg-surface">
+    <div class="container mx-auto px-6 max-w-4xl">
+
+      <h2 class="font-headline text-2xl md:text-3xl font-extrabold mb-2">Kaj vključuje servis VELUX okna?</h2>
+      <div class="h-1 w-16 bg-primary mb-8"></div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+          <h3 class="font-bold text-sm uppercase tracking-wider mb-4 text-primary">Preventivni servis (vsakih 3–5 let)</h3>
+          <ul class="text-secondary text-sm space-y-3 leading-relaxed">
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pregled in pritrditev obstoječih vijakov</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Podmazovanje tečajev in premičnih delov</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pregled zunanje obrobe in pretočnih kanalov</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Pri kondenzaciji na profilih: dodajanje izolativne pene na zunanje okenske profile</li>
+          </ul>
+        </div>
+        <div class="bg-surface-container-lowest p-8 border border-outline-variant/10">
+          <h3 class="font-bold text-sm uppercase tracking-wider mb-4 text-primary">Sanacija (po 15–20 letih)</h3>
+          <ul class="text-secondary text-sm space-y-3 leading-relaxed">
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Menjava tesnilne mase okoli zasteklitve</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Saniranje vijakov</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Zamenjava preperele pene na zunanjo obrobo pod strešniki — prepreči vdor vode pri dežju z vetrom</li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">check_circle</span>Brušenje lesenega dela okna in lakiranje s prozornim lakom na vodni osnovi. To ne izboljša izgleda potemnjenega lesa, ga pa zaščiti.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="font-headline text-2xl md:text-3xl font-extrabold mb-2">Kdaj je čas za servis?</h2>
+      <div class="h-1 w-16 bg-primary mb-6"></div>
+      <p class="text-secondary leading-relaxed mb-12 max-w-2xl">
+        Strokovnjaki priporočajo preventivni servis VELUX okna vsakih 3 do 5 let. Servis je nujen tudi ob vidnih znakih: zamakanje, težko odpiranje, kondenzacija na profilih ali poškodovana zunanja obroba.
+      </p>
+
+      <h2 class="font-headline text-2xl md:text-3xl font-extrabold mb-2">Cena servisa VELUX oken</h2>
+      <div class="h-1 w-16 bg-primary mb-6"></div>
+      <p class="text-secondary leading-relaxed mb-8 max-w-2xl">
+        Cena servisa je odvisna od obsega del in starosti okna. Najprej pregledamo okno — zamenjamo le, kar je res potrebno. Pošljite povpraševanje in pripravili bomo neobvezujoč predračun.
+      </p>
+      <a
+        href="/povprasevanje?tab=servis"
+        class="bg-primary text-on-primary px-8 py-4 font-bold inline-flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 mb-16"
+      >
+        Pošlji povpraševanje
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+
+      <h2 class="font-headline text-2xl md:text-3xl font-extrabold mb-2">Območje servisa</h2>
+      <div class="h-1 w-16 bg-primary mb-6"></div>
+      <p class="text-secondary leading-relaxed max-w-2xl">
+        Servis VELUX strešnih oken opravljamo v osrednji Sloveniji: <strong>Ljubljana</strong> in okolica, <strong>Domžale</strong>, <strong>Kamnik</strong>, <strong>Grosuplje</strong>, <strong>Litija</strong>, <strong>Medvode</strong> in bližnja okolica.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-surface-container-low">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="font-headline text-2xl md:text-3xl font-extrabold mb-2">Pogosta vprašanja o servisu VELUX</h2>
+      <div class="h-1 w-16 bg-primary mb-8"></div>
+      <div class="space-y-6">
+        <div class="bg-surface-container-lowest p-6 border border-outline-variant/10">
+          <h3 class="font-bold mb-2">Koliko stane servis VELUX okna?</h3>
+          <p class="text-secondary text-sm leading-relaxed">Cena servisa VELUX okna je odvisna od obsega del in starosti okna. Za natančen predračun pošljite povpraševanje.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 border border-outline-variant/10">
+          <h3 class="font-bold mb-2">Kako pogosto je potreben servis VELUX strešnega okna?</h3>
+          <p class="text-secondary text-sm leading-relaxed">Strokovnjaki priporočajo preventivni servis VELUX strešnega okna vsakih 3 do 5 let. Po 15 do 20 letih je priporočena celovita sanacija.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 border border-outline-variant/10">
+          <h3 class="font-bold mb-2">Ali servirate vsa VELUX okna?</h3>
+          <p class="text-secondary text-sm leading-relaxed">Da, servisiramo vse tipe VELUX strešnih oken — klasična, panoramska in svetlobnike, ne glede na starost okna.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 border border-outline-variant/10">
+          <h3 class="font-bold mb-2">Kje v Sloveniji opravljate servis VELUX oken?</h3>
+          <p class="text-secondary text-sm leading-relaxed">Servis VELUX oken opravljamo v osrednji Sloveniji: Ljubljana in okolica, Domžale, Kamnik, Grosuplje, Litija in Medvode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+  <Contact />
+</Layout>

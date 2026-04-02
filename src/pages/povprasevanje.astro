@@ -221,6 +221,28 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               </div>
             </fieldset>
 
+            <!-- Fotografija -->
+            <fieldset>
+              <legend class={legendCls}>
+                Fotografija <span class="text-secondary font-normal normal-case tracking-normal">(neobvezno — za natančnejši predračun)</span>
+              </legend>
+              <div class="space-y-2">
+                <p class="text-xs text-secondary/70">Fotografija odprtine ali obstoječega okna pomaga pri pripravi natančnejšega predračuna.</p>
+                <label for="foto_m" class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-outline-variant bg-surface-container cursor-pointer hover:border-primary transition-colors mt-2">
+                  <span class="material-symbols-outlined text-3xl text-secondary mb-1" aria-hidden="true">upload_file</span>
+                  <span class="text-sm text-secondary">Kliknite za nalaganje fotografije</span>
+                  <span class="text-xs text-secondary/60 mt-0.5">JPG, PNG, WebP – največ 5 MB</span>
+                  <input type="file" id="foto_m" name="foto_m" accept="image/*" class="sr-only" />
+                </label>
+                <div id="foto-preview-m" class="hidden mt-2">
+                  <img id="foto-preview-img-m" src="" alt="Predogled fotografije" class="max-h-48 object-contain border border-outline-variant" />
+                  <button type="button" id="foto-remove-m" class="block text-xs text-secondary hover:text-primary mt-1 transition-colors">
+                    Odstrani fotografijo
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+
             <!-- Opombe -->
             <div class="space-y-2">
               <label for="opomba" class={labelCls}>Dodatne opombe</label>
@@ -378,6 +400,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
   tabMontaza.addEventListener('click', () => activateTab('montaza'));
   tabServis.addEventListener('click', () => activateTab('servis'));
 
+  // Pre-select tab from URL param (?tab=servis or ?tab=montaza)
+  const urlTab = new URLSearchParams(window.location.search).get('tab');
+  if (urlTab === 'servis') activateTab('servis');
+
   // ── Conditional: staro okno dims ─────────────────────────────────────────
   const staroDims = document.getElementById('staro-dims') as HTMLDivElement;
   document.querySelectorAll('input[name="staro_okno"]').forEach(input => {
@@ -386,7 +412,31 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
     });
   });
 
-  // ── Photo preview ─────────────────────────────────────────────────────────
+  // ── Photo preview: montaža ────────────────────────────────────────────────
+  const fotoMontazaInput = document.getElementById('foto_m') as HTMLInputElement;
+  const fotoPreviewM = document.getElementById('foto-preview-m') as HTMLDivElement;
+  const fotoPreviewImgM = document.getElementById('foto-preview-img-m') as HTMLImageElement;
+  const fotoRemoveM = document.getElementById('foto-remove-m') as HTMLButtonElement;
+
+  fotoMontazaInput.addEventListener('change', () => {
+    const file = fotoMontazaInput.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Fotografija je prevelika. Največja dovoljena velikost je 5 MB.');
+      fotoMontazaInput.value = '';
+      return;
+    }
+    fotoPreviewImgM.src = URL.createObjectURL(file);
+    fotoPreviewM.classList.remove('hidden');
+  });
+
+  fotoRemoveM.addEventListener('click', () => {
+    fotoMontazaInput.value = '';
+    fotoPreviewImgM.src = '';
+    fotoPreviewM.classList.add('hidden');
+  });
+
+  // ── Photo preview: servis ─────────────────────────────────────────────────
   const fotoInput = document.getElementById('foto') as HTMLInputElement;
   const fotoPreview = document.getElementById('foto-preview') as HTMLDivElement;
   const fotoPreviewImg = document.getElementById('foto-preview-img') as HTMLImageElement;
@@ -429,21 +479,46 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
     submitMontaza.disabled = true;
     submitMontaza.textContent = 'Pošiljanje...';
 
-    const data = Object.fromEntries(new FormData(formMontaza));
+    const raw = Object.fromEntries(new FormData(formMontaza)) as Record<string, string>;
+    delete raw.foto_m;
+
+    const file = fotoMontazaInput.files?.[0];
+    if (file) {
+      try {
+        raw.foto_base64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = ev => resolve((ev.target!.result as string).split(',')[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+        raw.foto_naziv = file.name;
+      } catch {
+        showStatus(statusMontaza, false, 'Napaka pri branju fotografije. Poskusite znova.');
+        submitMontaza.disabled = false;
+        submitMontaza.textContent = 'Pošlji povpraševanje';
+        return;
+      }
+    }
+
     const ctrl = new AbortController();
-    const timeout = setTimeout(() => ctrl.abort(), 15000);
+    const timeout = setTimeout(() => ctrl.abort(), 20000);
 
     try {
       const res = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, type: 'montaza' }),
+        body: JSON.stringify({ ...raw, type: 'montaza' }),
         signal: ctrl.signal,
       });
       clearTimeout(timeout);
       const json = await res.json();
       showStatus(statusMontaza, res.ok, json.message ?? (res.ok ? 'Poslano!' : 'Napaka.'));
-      if (res.ok) { formMontaza.reset(); staroDims.classList.add('hidden'); }
+      if (res.ok) {
+        formMontaza.reset();
+        staroDims.classList.add('hidden');
+        fotoMontazaInput.value = '';
+        fotoPreviewM.classList.add('hidden');
+      }
     } catch (err) {
       clearTimeout(timeout);
       showStatus(statusMontaza, false, err instanceof Error && err.name === 'AbortError'

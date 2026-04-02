@@ -7,12 +7,14 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  schema?: string;
 }
 
 const {
-  title = "Aleš Jelnikar – Servis VELUX strešnih oken",
-  description = "Priporočen VELUX izvajalec. Profesionalen servis, vgradnja in vzdrževanje strešnih oken po celotni Sloveniji.",
-  ogImage = "/og-image.jpg",
+  title = "Servis VELUX strešnih oken – Aleš Jelnikar",
+  description = "Servis in montaža VELUX strešnih oken v Ljubljani in osrednji Sloveniji. Priporočen izvajalec z 15+ leti izkušenj — preventivni servis, sanacija, vgradnja.",
+  ogImage = "/favicon.png",
+  schema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -70,24 +72,94 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </noscript>
 
     <!-- LocalBusiness JSON-LD -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Aleš Jelnikar – VELUX strešna okna",
-        "description": "Priporočen VELUX izvajalec. Profesionalna vgradnja, servis in vzdrževanje strešnih oken.",
-        "url": "https://alesjelnikar.si",
-        "telephone": "031556508",
-        "email": "info@alesjelnikar.si",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Slovenija",
-          "addressCountry": "SI"
-        },
-        "areaServed": "Slovenija",
-        "priceRange": "$$"
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+            "@id": "https://alesjelnikar.si/#business",
+            "name": "Aleš Jelnikar – Servis VELUX strešnih oken",
+            "description": "Priporočen VELUX izvajalec. Servis, vgradnja in vzdrževanje strešnih oken VELUX v Ljubljani in osrednji Sloveniji.",
+            "url": "https://alesjelnikar.si",
+            "telephone": "+38631556508",
+            "email": "info@alesjelnikar.si",
+            "image": "https://alesjelnikar.si/hero.jpg",
+            "logo": "https://alesjelnikar.si/favicon.png",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ljubljana",
+              "addressRegion": "Osrednjeslovenska",
+              "addressCountry": "SI"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Ljubljana" },
+              { "@type": "City", "name": "Domžale" },
+              { "@type": "City", "name": "Kamnik" },
+              { "@type": "City", "name": "Grosuplje" },
+              { "@type": "City", "name": "Litija" },
+              { "@type": "City", "name": "Medvode" }
+            ],
+            "priceRange": "$$",
+            "knowsAbout": ["VELUX strešna okna", "servis strešnih oken", "montaža strešnih oken", "elektrificiranje strešnih oken"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Storitve VELUX strešnih oken",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Servis strešnih oken VELUX",
+                    "description": "Preventivni servis in sanacija strešnih oken VELUX. Podmazovanje, pregled tesnil, brušenje in lakiranje lesenih delov."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Montaža strešnih oken VELUX",
+                    "description": "Montaža vseh tipov VELUX strešnih oken — klasičnih, panoramskih in svetlobnikov."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Elektrificiranje strešnih oken VELUX",
+                    "description": "Elektrificiranje obstoječih ali novih strešnih oken z možnostjo dežnega senzorja."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Notranja in zunanja senčila VELUX",
+                    "description": "Montaža notranjih in zunanjih senčil ter originalnih VELUX obrob."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Svetlobniki in strešne line VELUX",
+                    "description": "Vgradnja svetlobnikov in strešnih lin za izhod na streho."
+                  }
+                }
+              ]
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "reviewCount": "3",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          }
+        ]
       }
     </script>
+    {schema && <script type="application/ld+json" is:inline set:html={schema} />}
   </head>
   <body class="bg-background text-on-background font-body antialiased">
     <!-- Skip link for keyboard users -->
@@ -106,12 +178,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
         <a href="/" class="flex items-center gap-3">
           <Image src={faviconImg} width={32} height={32} alt="AJel logo" class="h-8 w-8" />
-          <span class="font-headline font-black text-zinc-900 text-xl tracking-tighter uppercase">
+          <span class="font-headline font-black text-zinc-900 text-xl tracking-tighter">
             AJel - VELUX
           </span>
         </a>
 
         <div class="hidden md:flex items-center gap-8">
+          <a
+            href="/servis-velux"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
+            >Servis Velux</a
+          >
+          <a
+            href="/montaza-velux"
+            class="text-zinc-600 font-medium hover:text-primary transition-colors"
+            >Montaža Velux</a
+          >
           <a
             href="/#storitve"
             class="text-zinc-600 font-medium hover:text-primary transition-colors"
@@ -157,6 +239,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         class="hidden md:hidden bg-white border-t border-outline-variant/20 px-6 py-4"
       >
         <nav class="flex flex-col gap-4">
+          <a
+            href="/servis-velux"
+            class="font-label font-semibold text-zinc-600 py-2"
+            >Servis Velux</a
+          >
+          <a
+            href="/montaza-velux"
+            class="font-label font-semibold text-zinc-600 py-2"
+            >Montaža Velux</a
+          >
           <a
             href="/#storitve"
             class="font-label font-semibold text-zinc-600 py-2"
