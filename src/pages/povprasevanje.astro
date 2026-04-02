@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",

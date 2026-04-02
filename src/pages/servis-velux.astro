@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Reviews from '../components/Reviews.astro';
 import Contact from '../components/Contact.astro';
 
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [

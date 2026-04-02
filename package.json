@@ -14,6 +14,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.4",
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/manrope": "^5.2.8",
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.0.3",
     "@tailwindcss/vite": "^4.2.2",
