@@ -8,6 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://alesjelnikar.si',
   output: 'server',
+  trailingSlash: 'never',
   adapter: cloudflare(),
   integrations: [
     sitemap({
