@@ -1,0 +1,4 @@
+# Strip trailing slashes (redirect to canonical non-slash URLs)
+/povprasevanje/ /povprasevanje 301
+/montaza-velux/ /montaza-velux 301
+/servis-velux/ /servis-velux 301
