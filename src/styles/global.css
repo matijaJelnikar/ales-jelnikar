@@ -54,10 +54,7 @@
   --font-body: "Inter Variable", "Inter", sans-serif;
   --font-label: "Inter Variable", "Inter", sans-serif;
 
-  --radius: 0.125rem;
   --radius-lg: 0.25rem;
-  --radius-xl: 0.5rem;
-  --radius-2xl: 1rem;
   --radius-full: 0.75rem;
 }
 
