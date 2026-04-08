@@ -1,5 +1,5 @@
 ---
-import styles from "../styles/global.css?inline";
+import "../styles/global.css";
 import { Image } from "astro:assets";
 import faviconImg from "../assets/favicon.png";
 import manropeLatinUrl from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url";
@@ -33,7 +33,6 @@ const canonicalURL = new URL(pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <Fragment set:html={`<style>${styles}</style>`} />
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <link rel="icon" href="/favicon.png" />
     <link rel="canonical" href={canonicalURL} />
