@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 import faviconImg from "../assets/favicon.png";
 import manropeLatinUrl from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url";
 import manropeLatinExtUrl from "@fontsource-variable/manrope/files/manrope-latin-ext-wght-normal.woff2?url";
+import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import interLatinExtUrl from "@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -61,6 +63,8 @@ const canonicalURL = new URL(pathname, Astro.site);
     <!-- Preload self-hosted fonts — low priority so they don't compete with LCP image -->
     <link rel="preload" as="font" type="font/woff2" href={manropeLatinUrl} crossorigin fetchpriority="low" />
     <link rel="preload" as="font" type="font/woff2" href={manropeLatinExtUrl} crossorigin fetchpriority="low" />
+    <link rel="preload" as="font" type="font/woff2" href={interLatinUrl} crossorigin fetchpriority="low" />
+    <link rel="preload" as="font" type="font/woff2" href={interLatinExtUrl} crossorigin fetchpriority="low" />
 
     <!-- Material Symbols — non-blocking load (icons only, fonts are self-hosted) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

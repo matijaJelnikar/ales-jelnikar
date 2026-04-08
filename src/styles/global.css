@@ -1,5 +1,21 @@
 /* Self-hosted variable fonts — latin + latin-ext only (covers Slovenian č, š, ž) */
 @font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
   font-family: 'Manrope Variable';
   font-style: normal;
   font-display: swap;
@@ -20,53 +36,23 @@
 
 @theme {
   --color-primary: #bb0013;
-  --color-primary-container: #e71621;
-  --color-primary-fixed: #ffdad6;
-  --color-primary-fixed-dim: #ffb4ab;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #fffbff;
-  --color-on-primary-fixed: #410002;
-  --color-on-primary-fixed-variant: #93000d;
 
   --color-secondary: #5f5e5c;
-  --color-secondary-container: #e2dfdc;
-  --color-secondary-fixed: #e5e2df;
-  --color-secondary-fixed-dim: #c8c6c3;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #636260;
-  --color-on-secondary-fixed: #1b1c1a;
-  --color-on-secondary-fixed-variant: #474744;
-
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
-  --color-on-error: #ffffff;
-  --color-on-error-container: #93000a;
 
   --color-background: #f9f9f9;
   --color-on-background: #1a1c1c;
   --color-surface: #f9f9f9;
-  --color-surface-dim: #dadada;
-  --color-surface-bright: #f9f9f9;
-  --color-surface-tint: #c00014;
-  --color-surface-variant: #e2e2e2;
   --color-surface-container-lowest: #ffffff;
   --color-surface-container-low: #f3f3f3;
   --color-surface-container: #eeeeee;
-  --color-surface-container-high: #e8e8e8;
-  --color-surface-container-highest: #e2e2e2;
   --color-on-surface: #1a1c1c;
-  --color-on-surface-variant: #5e3f3c;
 
-  --color-outline: #936e6a;
   --color-outline-variant: #e8bcb7;
 
-  --color-inverse-primary: #ffb4ab;
-  --color-inverse-surface: #2f3131;
-  --color-inverse-on-surface: #f1f1f1;
-
   --font-headline: "Manrope Variable", "Manrope", sans-serif;
-  --font-body: "Manrope Variable", "Manrope", sans-serif;
-  --font-label: "Manrope Variable", "Manrope", sans-serif;
+  --font-body: "Inter Variable", "Inter", sans-serif;
+  --font-label: "Inter Variable", "Inter", sans-serif;
 
   --radius: 0.125rem;
   --radius-lg: 0.25rem;
