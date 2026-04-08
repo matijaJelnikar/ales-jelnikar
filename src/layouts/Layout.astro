@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title = "Servis VELUX strešnih oken – Aleš Jelnikar",
-  description = "Servis in montaža VELUX strešnih oken v Ljubljani in osrednji Sloveniji. Priporočen izvajalec z 15+ leti izkušenj — preventivni servis, sanacija, vgradnja.",
+  description = "Servis in montaža VELUX strešnih oken v Ljubljani in širši okolici. Priporočen izvajalec z 15+ leti izkušenj — preventivni servis, sanacija, vgradnja.",
   ogImage = "/favicon.png",
   preloadImage,
   schema,
@@ -80,7 +80,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
             "@id": "https://alesjelnikar.si/#business",
             "name": "Aleš Jelnikar – Servis VELUX strešnih oken",
-            "description": "Priporočen VELUX izvajalec. Servis, vgradnja in vzdrževanje strešnih oken VELUX v Ljubljani in osrednji Sloveniji.",
+            "description": "Priporočen VELUX izvajalec. Servis, vgradnja in vzdrževanje strešnih oken VELUX v Ljubljani in širši okolici.",
             "url": "https://alesjelnikar.si",
             "telephone": "+38631556508",
             "email": "info@alesjelnikar.si",
@@ -94,11 +94,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             },
             "areaServed": [
               { "@type": "City", "name": "Ljubljana" },
-              { "@type": "City", "name": "Domžale" },
               { "@type": "City", "name": "Kamnik" },
-              { "@type": "City", "name": "Grosuplje" },
-              { "@type": "City", "name": "Litija" },
-              { "@type": "City", "name": "Medvode" }
+              { "@type": "City", "name": "Logatec" },
+              { "@type": "City", "name": "Bled" },
+              { "@type": "City", "name": "Radovljica" },
+              { "@type": "City", "name": "Domžale" },
+              { "@type": "City", "name": "Postojna" }
             ],
             "priceRange": "$$",
             "knowsAbout": ["VELUX strešna okna", "servis strešnih oken", "montaža strešnih oken", "elektrificiranje strešnih oken"],
@@ -329,6 +330,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             href="/#kontakt"
             class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
             >Kontakt</a
+          >
+          <a
+            href="https://velux.digital-catalogue.com/SI/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-body text-sm uppercase tracking-widest text-zinc-500 hover:text-primary underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100"
+            >Katalog VELUX</a
           >
         </nav>
       </div>

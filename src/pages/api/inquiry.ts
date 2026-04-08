@@ -81,10 +81,9 @@ export const POST: APIRoute = async ({ request }) => {
   let attachments: { filename: string; content: string }[] | undefined;
 
   if (type === 'montaza') {
-    const { sirina, visina, vrsta_kritine, notranja_obdelava, staro_okno, tip_dela, tip_okvirja, odpiranje, zasteklitev } = b;
+    const { sirina, vrsta_kritine, notranja_obdelava, staro_okno, tip_dela, tip_okvirja, odpiranje, zasteklitev } = b;
 
     if (!isStr(sirina) || !sirina.trim() || isNaN(Number(sirina))) return json(400, 'Vnesite širino odprtine.');
-    if (!isStr(visina) || !visina.trim() || isNaN(Number(visina))) return json(400, 'Vnesite višino odprtine.');
     if (!isStr(vrsta_kritine) || !Object.keys(KRITINA).includes(vrsta_kritine)) return json(400, 'Izberite vrsto kritine.');
     if (!isStr(notranja_obdelava) || !Object.keys(OBDELAVA).includes(notranja_obdelava)) return json(400, 'Izberite notranjo obdelavo.');
     if (!isStr(staro_okno) || !['da', 'ne'].includes(staro_okno)) return json(400, 'Označite obstoječe okno.');
@@ -111,7 +110,6 @@ export const POST: APIRoute = async ({ request }) => {
         ${emailRaw ? tdRow('E-naslov', emailRaw) : ''}
         ${sectionHeader('Dimenzije odprtine med špirovci')}
         ${tdRow('Širina', sirina + ' cm')}
-        ${tdRow('Višina', visina + ' cm')}
         ${sectionHeader('Streha in notranjost')}
         ${tdRow('Vrsta kritine', KRITINA[vrsta_kritine])}
         ${tdRow('Notranja obdelava', OBDELAVA[notranja_obdelava])}
