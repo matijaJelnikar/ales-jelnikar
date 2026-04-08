@@ -12,7 +12,7 @@ interface Project {
 
 const { projects = [] } = Astro.props as { projects: Project[] };
 
-const displayProjects = projects;
+const INITIAL = 4;
 ---
 
 <section id="galerija" class="py-24 bg-surface">
@@ -22,14 +22,14 @@ const displayProjects = projects;
       <p class="text-secondary max-w-xl mx-auto">Oglejte si nekaj naših zadnjih montaž po celotni Sloveniji.</p>
     </div>
 
-    {displayProjects.length === 0 && (
+    {projects.length === 0 && (
       <p class="text-center text-secondary py-12">Galerija projektov bo kmalu na voljo.</p>
     )}
 
-    {displayProjects.length > 0 && (
+    {projects.length > 0 && (
     <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {displayProjects.map((project, i) => (
-        <div class="group" data-gallery-item data-index={i}>
+      {projects.map((project, i) => (
+        <div class:list={["group", i >= INITIAL && "hidden"]} data-gallery-item data-index={i}>
           {project.beforeUrl ? (
             /* Before/after comparison slider */
             <div
@@ -97,7 +97,7 @@ const displayProjects = projects;
     </div>
     )}
 
-    {displayProjects.length > 4 && (
+    {projects.length > INITIAL && (
       <div id="gallery-load-more" class="flex justify-center mt-10">
         <button
           id="load-more-btn"
@@ -114,62 +114,59 @@ const displayProjects = projects;
 <script>
   const INITIAL = 4;
 
-  // Hide items beyond the initial count
-  const allItems = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
-  allItems.forEach((item) => {
-    if (Number(item.dataset.index) >= INITIAL) {
-      item.style.display = 'none';
-    }
-  });
-
-  // Load more button
+  // Load more button — toggle hidden class (items are hidden server-side, no work at page load)
   const loadMoreBtn = document.getElementById('load-more-btn');
   const loadMoreWrapper = document.getElementById('gallery-load-more');
   if (loadMoreBtn && loadMoreWrapper) {
     let shown = INITIAL;
+    const allItems = document.querySelectorAll<HTMLElement>('[data-gallery-item]');
     loadMoreBtn.addEventListener('click', () => {
-      const hidden = Array.from(allItems).filter((el) => el.style.display === 'none');
-      hidden.slice(0, INITIAL).forEach((el) => { el.style.display = ''; });
+      const hidden = Array.from(allItems).filter((el) => el.classList.contains('hidden'));
+      hidden.slice(0, INITIAL).forEach((el) => el.classList.remove('hidden'));
       shown += INITIAL;
-      if (shown >= allItems.length) {
-        loadMoreWrapper.style.display = 'none';
-      }
+      if (shown >= allItems.length) loadMoreWrapper.classList.add('hidden');
     });
   }
 
-  document.querySelectorAll<HTMLElement>('[data-comparison]').forEach((slider) => {
-    const beforeClip = slider.querySelector<HTMLElement>('.before-clip');
-    const handle = slider.querySelector<HTMLElement>('.comparison-handle');
-    if (!beforeClip || !handle) return;
+  // Defer slider setup until gallery scrolls into view
+  const gallerySection = document.getElementById('galerija');
+  if (gallerySection) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
 
-    let dragging = false;
+      document.querySelectorAll<HTMLElement>('[data-comparison]').forEach((slider) => {
+        const beforeClip = slider.querySelector<HTMLElement>('.before-clip');
+        const handle = slider.querySelector<HTMLElement>('.comparison-handle');
+        if (!beforeClip || !handle) return;
 
-    const poLabel = slider.querySelector<HTMLElement>('.po-label');
+        let dragging = false;
+        const poLabel = slider.querySelector<HTMLElement>('.po-label');
 
-    const setPosition = (clientX: number) => {
-      const rect = slider.getBoundingClientRect();
-      const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
-      const pct = (x / rect.width) * 100;
-      beforeClip.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      handle.style.left = `${pct}%`;
-      // Hide "Po" label when the before-clip covers it (slider near right edge)
-      if (poLabel) poLabel.style.opacity = pct >= 88 ? '0' : '1';
-    };
+        const setPosition = (clientX: number) => {
+          const rect = slider.getBoundingClientRect();
+          const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+          const pct = (x / rect.width) * 100;
+          beforeClip.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+          handle.style.left = `${pct}%`;
+          if (poLabel) poLabel.style.opacity = pct >= 88 ? '0' : '1';
+        };
 
-    slider.addEventListener('mousedown', (e) => {
-      dragging = true;
-      setPosition(e.clientX);
-    });
-    window.addEventListener('mouseup', () => { dragging = false; });
-    window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+        slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
+        window.addEventListener('mouseup', () => { dragging = false; });
+        window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
 
-    slider.addEventListener('touchstart', (e) => {
-      dragging = true;
-      setPosition(e.touches[0].clientX);
-    }, { passive: true });
-    window.addEventListener('touchend', () => { dragging = false; });
-    window.addEventListener('touchmove', (e) => {
-      if (dragging) setPosition(e.touches[0].clientX);
-    }, { passive: true });
-  });
+        slider.addEventListener('touchstart', (e) => {
+          dragging = true;
+          setPosition(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchend', () => { dragging = false; });
+        window.addEventListener('touchmove', (e) => {
+          if (dragging) setPosition(e.touches[0].clientX);
+        }, { passive: true });
+      });
+    }, { rootMargin: '200px' });
+
+    observer.observe(gallerySection);
+  }
 </script>
