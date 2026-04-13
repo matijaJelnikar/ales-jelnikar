@@ -70,10 +70,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
             <!-- Dimenzije -->
             <fieldset>
               <legend class={legendCls}>Dimenzije odprtine med špirovci</legend>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid">
                 <div class="space-y-2">
-                  <label for="sirina" class={labelCls}>Širina (cm) <span aria-label="obvezno">*</span></label>
-                  <input id="sirina" name="sirina" type="number" required min="1" max="999" placeholder="npr. 74" class={inputCls} />
+                  <label for="sirina" class={labelCls}>Širina (cm)</label>
+                  <input id="sirina" name="sirina" type="number" min="1" max="999" placeholder="npr. 74" class={inputCls} />
                 </div>
               </div>
             </fieldset>
@@ -83,9 +83,9 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               <legend class={legendCls}>Streha in notranjost</legend>
               <div class="space-y-6">
                 <div class="space-y-2">
-                  <label for="vrsta_kritine" class={labelCls}>Vrsta kritine <span aria-label="obvezno">*</span></label>
+                  <label for="vrsta_kritine" class={labelCls}>Vrsta kritine</label>
                   <div class="relative">
-                    <select id="vrsta_kritine" name="vrsta_kritine" required class={`${inputCls} appearance-none pr-10`}>
+                    <select id="vrsta_kritine" name="vrsta_kritine" class={`${inputCls} appearance-none pr-10`}>
                       <option value="">Izberite vrsto kritine</option>
                       <option value="opecna">Opečna (glinaste ploščice)</option>
                       <option value="betonska">Betonska (betonske ploščice)</option>
@@ -99,7 +99,7 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                 </div>
 
                 <div class="space-y-3">
-                  <p class={labelCls}>Notranja obdelava <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Notranja obdelava</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Notranja obdelava">
                     {[
                       { value: 'gips', label: 'Gips' },
@@ -107,7 +107,7 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                       { value: 'ni', label: 'Ni obdelano (prazna podstreha)' },
                     ].map(({ value, label }) => (
                       <label>
-                        <input type="radio" name="notranja_obdelava" value={value} class="sr-only peer" required />
+                        <input type="radio" name="notranja_obdelava" value={value} class="sr-only peer" />
                         <span class={radioCls}>{label}</span>
                       </label>
                     ))}
@@ -121,10 +121,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               <legend class={legendCls}>Obstoječe stanje</legend>
               <div class="space-y-6">
                 <div class="space-y-3">
-                  <p class={labelCls}>Ali je v odprtini staro okno? <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Ali je v odprtini staro okno?</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Staro okno">
                     <label>
-                      <input type="radio" name="staro_okno" value="da" id="staro_okno_da" class="sr-only peer" required />
+                      <input type="radio" name="staro_okno" value="da" id="staro_okno_da" class="sr-only peer" />
                       <span class={radioCls}>Da, okno je</span>
                     </label>
                     <label>
@@ -151,10 +151,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                 </div>
 
                 <div class="space-y-3">
-                  <p class={labelCls}>Tip dela <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Tip dela</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Tip dela">
                     <label>
-                      <input type="radio" name="tip_dela" value="prazna" class="sr-only peer" required />
+                      <input type="radio" name="tip_dela" value="prazna" class="sr-only peer" />
                       <span class={radioCls}>Prazna podstreha</span>
                     </label>
                     <label>
@@ -188,10 +188,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               <legend class={legendCls}>Katero okno želite</legend>
               <div class="space-y-6">
                 <div class="space-y-3">
-                  <p class={labelCls}>Okvir <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Okvir</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Okvir">
                     <label>
-                      <input type="radio" name="tip_okvirja" value="plastificirano" class="sr-only peer" required />
+                      <input type="radio" name="tip_okvirja" value="plastificirano" class="sr-only peer" />
                       <span class={radioCls}>Plastificirano (PVC) - z leseno osnovo</span>
                     </label>
                     <label>
@@ -201,10 +201,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                   </div>
                 </div>
                 <div class="space-y-3">
-                  <p class={labelCls}>Odpiranje <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Odpiranje</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Odpiranje">
                     <label>
-                      <input type="radio" name="odpiranje" value="rocno" class="sr-only peer" required />
+                      <input type="radio" name="odpiranje" value="rocno" class="sr-only peer" />
                       <span class={radioCls}>Ročno</span>
                     </label>
                     <label>
@@ -214,10 +214,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                   </div>
                 </div>
                 <div class="space-y-3">
-                  <p class={labelCls}>Zasteklitev <span aria-label="obvezno">*</span></p>
+                  <p class={labelCls}>Zasteklitev</p>
                   <div class="flex flex-wrap gap-2" role="group" aria-label="Zasteklitev">
                     <label>
-                      <input type="radio" name="zasteklitev" value="dvoslojno" class="sr-only peer" required />
+                      <input type="radio" name="zasteklitev" value="dvoslojno" class="sr-only peer" />
                       <span class={radioCls}>Dvoslojno</span>
                     </label>
                     <label>
@@ -272,6 +272,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                   <input id="telefon_m" name="telefon" type="tel" required maxlength="20" placeholder="041 000 000" class={inputCls} />
                 </div>
                 <div class="space-y-2 md:col-span-2">
+                  <label for="naslov_m" class={labelCls}>Naslov <span aria-label="obvezno">*</span></label>
+                  <input id="naslov_m" name="naslov" type="text" required maxlength="200" placeholder="Ulica 1, 1000 Ljubljana" class={inputCls} />
+                </div>
+                <div class="space-y-2 md:col-span-2">
                   <label for="email_m" class={labelCls}>E-naslov</label>
                   <input id="email_m" name="email" type="email" maxlength="200" placeholder="vas@email.com" class={inputCls} />
                 </div>
@@ -297,8 +301,8 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               <legend class={legendCls}>Podatki o oknu</legend>
               <div class="space-y-6">
                 <div class="space-y-2">
-                  <label for="starost_okna" class={labelCls}>Starost okna (leta) <span aria-label="obvezno">*</span></label>
-                  <input id="starost_okna" name="starost_okna" type="number" required min="0" max="100" placeholder="npr. 20" class={inputCls} />
+                  <label for="starost_okna" class={labelCls}>Starost okna (leta)</label>
+                  <input id="starost_okna" name="starost_okna" type="number" min="0" max="100" placeholder="npr. 20" class={inputCls} />
                 </div>
 
                 <div class="space-y-2">
@@ -325,16 +329,16 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
               <legend class={legendCls}>Opis težave</legend>
               <div class="space-y-6">
                 <div class="space-y-2">
-                  <label for="opis_problema" class={labelCls}>Opis problema <span aria-label="obvezno">*</span></label>
-                  <textarea id="opis_problema" name="opis_problema" required rows="4" maxlength="2000"
+                  <label for="opis_problema" class={labelCls}>Opis problema</label>
+                  <textarea id="opis_problema" name="opis_problema" rows="4" maxlength="2000"
                     placeholder="Opišite težavo z oknom..."
                     class={`${inputCls} resize-none`}></textarea>
                 </div>
 
                 <div class="space-y-2">
-                  <label for="kdaj_zamaka" class={labelCls}>Kdaj zamaka / pušča? <span aria-label="obvezno">*</span></label>
+                  <label for="kdaj_zamaka" class={labelCls}>Kdaj zamaka / pušča?</label>
                   <div class="relative">
-                    <select id="kdaj_zamaka" name="kdaj_zamaka" required class={`${inputCls} appearance-none pr-10`}>
+                    <select id="kdaj_zamaka" name="kdaj_zamaka" class={`${inputCls} appearance-none pr-10`}>
                       <option value="">Izberite...</option>
                       <option value="pozimi">Samo pozimi</option>
                       <option value="poleti">Samo poleti</option>
@@ -358,6 +362,10 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                 <div class="space-y-2">
                   <label for="telefon_s" class={labelCls}>Telefon <span aria-label="obvezno">*</span></label>
                   <input id="telefon_s" name="telefon" type="tel" required maxlength="20" placeholder="041 000 000" class={inputCls} />
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label for="naslov_s" class={labelCls}>Naslov <span aria-label="obvezno">*</span></label>
+                  <input id="naslov_s" name="naslov" type="text" required maxlength="200" placeholder="Ulica 1, 1000 Ljubljana" class={inputCls} />
                 </div>
                 <div class="space-y-2 md:col-span-2">
                   <label for="email_s" class={labelCls}>E-naslov</label>
@@ -468,6 +476,47 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
     fotoPreview.classList.add('hidden');
   });
 
+  // ── Field validation helpers ──────────────────────────────────────────────
+  const REQUIRED_MSGS: Record<string, string> = {
+    ime:     'Prosimo, vnesite ime in priimek.',
+    telefon: 'Prosimo, vnesite telefonsko številko.',
+    naslov:  'Prosimo, vnesite naslov.',
+  };
+
+  function markError(el: HTMLInputElement | HTMLTextAreaElement, msg: string) {
+    el.style.boxShadow = '0 0 0 2px #ef4444';
+    let errEl = el.parentElement!.querySelector<HTMLSpanElement>('.field-error');
+    if (!errEl) {
+      errEl = document.createElement('span');
+      errEl.className = 'field-error text-xs text-red-600 mt-1 block';
+      el.parentElement!.appendChild(errEl);
+    }
+    errEl.textContent = msg;
+  }
+
+  function clearError(el: HTMLInputElement | HTMLTextAreaElement) {
+    el.style.removeProperty('box-shadow');
+    el.parentElement!.querySelector('.field-error')?.remove();
+  }
+
+  function validateForm(form: HTMLFormElement): boolean {
+    let firstInvalid: HTMLElement | null = null;
+    let valid = true;
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]').forEach(el => {
+      if (!el.value.trim()) {
+        markError(el, REQUIRED_MSGS[el.name] ?? 'To polje je obvezno.');
+        if (!firstInvalid) firstInvalid = el;
+        valid = false;
+      }
+    });
+    if (firstInvalid) (firstInvalid as HTMLElement).focus();
+    return valid;
+  }
+
+  function clearAllErrors(form: HTMLFormElement) {
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]').forEach(clearError);
+  }
+
   // ── Status helper ─────────────────────────────────────────────────────────
   function showStatus(el: HTMLDivElement, ok: boolean, msg: string) {
     el.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-error-container', 'text-on-error-container');
@@ -481,9 +530,13 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
   const submitMontaza = document.getElementById('submit-montaza') as HTMLButtonElement;
   const statusMontaza = document.getElementById('status-montaza') as HTMLDivElement;
 
+  formMontaza.querySelectorAll<HTMLInputElement>('[required]').forEach(el => {
+    el.addEventListener('input', () => clearError(el));
+  });
+
   formMontaza.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!formMontaza.checkValidity()) { formMontaza.reportValidity(); return; }
+    if (!validateForm(formMontaza)) return;
     submitMontaza.disabled = true;
     submitMontaza.textContent = 'Pošiljanje...';
 
@@ -522,6 +575,7 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
       const json = await res.json();
       showStatus(statusMontaza, res.ok, json.message ?? (res.ok ? 'Poslano!' : 'Napaka.'));
       if (res.ok) {
+        clearAllErrors(formMontaza);
         formMontaza.reset();
         staroDims.classList.add('hidden');
         fotoMontazaInput.value = '';
@@ -543,9 +597,13 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
   const submitServis = document.getElementById('submit-servis') as HTMLButtonElement;
   const statusServis = document.getElementById('status-servis') as HTMLDivElement;
 
+  formServis.querySelectorAll<HTMLInputElement>('[required]').forEach(el => {
+    el.addEventListener('input', () => clearError(el));
+  });
+
   formServis.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!formServis.checkValidity()) { formServis.reportValidity(); return; }
+    if (!validateForm(formServis)) return;
     submitServis.disabled = true;
     submitServis.textContent = 'Pošiljanje...';
 
@@ -584,6 +642,7 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
       const json = await res.json();
       showStatus(statusServis, res.ok, json.message ?? (res.ok ? 'Poslano!' : 'Napaka.'));
       if (res.ok) {
+        clearAllErrors(formServis);
         formServis.reset();
         fotoInput.value = '';
         fotoPreview.classList.add('hidden');

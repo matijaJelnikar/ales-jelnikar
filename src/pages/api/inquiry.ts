@@ -68,6 +68,9 @@ export const POST: APIRoute = async ({ request }) => {
     if (emailRaw.length > 200) return json(400, 'E-naslov je predolg.');
     if (!EMAIL_REGEX.test(emailRaw)) return json(400, 'Neveljaven e-naslov.');
   }
+  if (!isStr(b.naslov) || !b.naslov.trim()) return json(400, 'Vnesite naslov.');
+  if (b.naslov.length > 200) return json(400, 'Naslov je predolg.');
+  const naslov = b.naslov.trim();
 
   const apiKey = import.meta.env.RESEND_API_KEY;
   if (!apiKey) return json(500, 'Pošiljanje ni uspelo. Prosimo, pokličite nas neposredno.');
@@ -83,14 +86,22 @@ export const POST: APIRoute = async ({ request }) => {
   if (type === 'montaza') {
     const { sirina, vrsta_kritine, notranja_obdelava, staro_okno, tip_dela, tip_okvirja, odpiranje, zasteklitev } = b;
 
-    if (!isStr(sirina) || !sirina.trim() || isNaN(Number(sirina))) return json(400, 'Vnesite širino odprtine.');
-    if (!isStr(vrsta_kritine) || !Object.keys(KRITINA).includes(vrsta_kritine)) return json(400, 'Izberite vrsto kritine.');
-    if (!isStr(notranja_obdelava) || !Object.keys(OBDELAVA).includes(notranja_obdelava)) return json(400, 'Izberite notranjo obdelavo.');
-    if (!isStr(staro_okno) || !['da', 'ne'].includes(staro_okno)) return json(400, 'Označite obstoječe okno.');
-    if (!isStr(tip_dela) || !['prazna', 'soba'].includes(tip_dela)) return json(400, 'Izberite tip dela.');
-    if (!isStr(tip_okvirja) || !['plastificirano', 'leseno'].includes(tip_okvirja)) return json(400, 'Izberite tip okvirja.');
-    if (!isStr(odpiranje) || !['rocno', 'elektricno'].includes(odpiranje)) return json(400, 'Izberite tip odpiranja.');
-    if (!isStr(zasteklitev) || !['dvoslojno', 'troslojno'].includes(zasteklitev)) return json(400, 'Izberite zasteklitev.');
+    const sirinaVal = isStr(sirina) ? sirina.trim() : '';
+    if (sirinaVal && isNaN(Number(sirinaVal))) return json(400, 'Neveljavna širina odprtine.');
+    const kritinaVal = isStr(vrsta_kritine) ? vrsta_kritine : '';
+    if (kritinaVal && !Object.keys(KRITINA).includes(kritinaVal)) return json(400, 'Neveljavna vrsta kritine.');
+    const obdelavaVal = isStr(notranja_obdelava) ? notranja_obdelava : '';
+    if (obdelavaVal && !Object.keys(OBDELAVA).includes(obdelavaVal)) return json(400, 'Neveljavna notranja obdelava.');
+    const staroOknoVal = isStr(staro_okno) ? staro_okno : '';
+    if (staroOknoVal && !['da', 'ne'].includes(staroOknoVal)) return json(400, 'Neveljavno polje obstoječega okna.');
+    const tipDelaVal = isStr(tip_dela) ? tip_dela : '';
+    if (tipDelaVal && !['prazna', 'soba'].includes(tipDelaVal)) return json(400, 'Neveljaven tip dela.');
+    const tipOkvirjaVal = isStr(tip_okvirja) ? tip_okvirja : '';
+    if (tipOkvirjaVal && !['plastificirano', 'leseno'].includes(tipOkvirjaVal)) return json(400, 'Neveljaven tip okvirja.');
+    const odpiranieVal = isStr(odpiranje) ? odpiranje : '';
+    if (odpiranieVal && !['rocno', 'elektricno'].includes(odpiranieVal)) return json(400, 'Neveljaven tip odpiranja.');
+    const zasteklitevVal = isStr(zasteklitev) ? zasteklitev : '';
+    if (zasteklitevVal && !['dvoslojno', 'troslojno'].includes(zasteklitevVal)) return json(400, 'Neveljavna zasteklitev.');
 
     const opomba = isStr(b.opomba) ? b.opomba.slice(0, 2000) : '';
     const vod = isStr(b.visina_od_tal) ? b.visina_od_tal.slice(0, 10) : '';
@@ -107,24 +118,22 @@ export const POST: APIRoute = async ({ request }) => {
         ${sectionHeader('Kontaktni podatki')}
         ${tdRow('Ime in priimek', ime)}
         ${tdRow('Telefon', telefon)}
+        ${tdRow('Naslov', naslov)}
         ${emailRaw ? tdRow('E-naslov', emailRaw) : ''}
-        ${sectionHeader('Dimenzije odprtine med špirovci')}
-        ${tdRow('Širina', sirina + ' cm')}
-        ${sectionHeader('Streha in notranjost')}
-        ${tdRow('Vrsta kritine', KRITINA[vrsta_kritine])}
-        ${tdRow('Notranja obdelava', OBDELAVA[notranja_obdelava])}
-        ${sectionHeader('Obstoječe stanje')}
-        ${tdRow('Staro okno v odprtini', staro_okno === 'da' ? 'Da' : 'Ne')}
-        ${staro_okno === 'da' && ss ? tdRow('Zunanji okvir – širina', ss + ' cm') : ''}
-        ${staro_okno === 'da' && sv ? tdRow('Zunanji okvir – višina', sv + ' cm') : ''}
-        ${tdRow('Tip dela', tip_dela === 'prazna' ? 'Prazna podstreha' : 'Soba z dokončanim stropom')}
-        ${sectionHeader('Višine')}
-        ${tdRow('Višina od tal do vrha okna', vod ? vod + ' cm' : '—')}
-        ${tdRow('Višina parapetnega zidu', vpz ? vpz + ' cm' : '—')}
-        ${sectionHeader('Vrsta okna')}
-        ${tdRow('Okvir', tip_okvirja === 'plastificirano' ? 'Plastificirano (PVC)' : 'Leseno')}
-        ${tdRow('Odpiranje', odpiranje === 'rocno' ? 'Ročno' : 'Električno')}
-        ${tdRow('Zasteklitev', zasteklitev === 'dvoslojno' ? 'Dvoslojno' : 'Troslojno')}
+        ${sirinaVal ? `${sectionHeader('Dimenzije odprtine med špirovci')}${tdRow('Širina', sirinaVal + ' cm')}` : ''}
+        ${kritinaVal || obdelavaVal ? sectionHeader('Streha in notranjost') : ''}
+        ${kritinaVal ? tdRow('Vrsta kritine', KRITINA[kritinaVal]) : ''}
+        ${obdelavaVal ? tdRow('Notranja obdelava', OBDELAVA[obdelavaVal]) : ''}
+        ${staroOknoVal || tipDelaVal ? sectionHeader('Obstoječe stanje') : ''}
+        ${staroOknoVal ? tdRow('Staro okno v odprtini', staroOknoVal === 'da' ? 'Da' : 'Ne') : ''}
+        ${staroOknoVal === 'da' && ss ? tdRow('Zunanji okvir – širina', ss + ' cm') : ''}
+        ${staroOknoVal === 'da' && sv ? tdRow('Zunanji okvir – višina', sv + ' cm') : ''}
+        ${tipDelaVal ? tdRow('Tip dela', tipDelaVal === 'prazna' ? 'Prazna podstreha' : 'Soba z dokončanim stropom') : ''}
+        ${vod || vpz ? `${sectionHeader('Višine')}${vod ? tdRow('Višina od tal do vrha okna', vod + ' cm') : ''}${vpz ? tdRow('Višina parapetnega zidu', vpz + ' cm') : ''}` : ''}
+        ${tipOkvirjaVal || odpiranieVal || zasteklitevVal ? sectionHeader('Vrsta okna') : ''}
+        ${tipOkvirjaVal ? tdRow('Okvir', tipOkvirjaVal === 'plastificirano' ? 'Plastificirano (PVC)' : 'Leseno') : ''}
+        ${odpiranieVal ? tdRow('Odpiranje', odpiranieVal === 'rocno' ? 'Ročno' : 'Električno') : ''}
+        ${zasteklitevVal ? tdRow('Zasteklitev', zasteklitevVal === 'dvoslojno' ? 'Dvoslojno' : 'Troslojno') : ''}
         ${opomba ? `${sectionHeader('Opombe')}<tr><td colspan="2" style="padding:10px 12px;white-space:pre-wrap;font-size:14px;">${esc(opomba)}</td></tr>` : ''}
       </table>
     </div>`;
@@ -132,12 +141,15 @@ export const POST: APIRoute = async ({ request }) => {
   } else {
     const { starost_okna, opis_problema, kdaj_zamaka, foto_base64, foto_naziv } = b;
 
-    if (!isStr(starost_okna) || !starost_okna.trim() || isNaN(Number(starost_okna))) return json(400, 'Vnesite starost okna.');
-    const starostNum = parseInt(starost_okna, 10);
-    if (starostNum < 0 || starostNum > 200) return json(400, 'Neveljava starost okna.');
-    if (!isStr(opis_problema) || !opis_problema.trim()) return json(400, 'Opišite problem.');
-    if (opis_problema.length > 2000) return json(400, 'Opis je predolg (največ 2000 znakov).');
-    if (!isStr(kdaj_zamaka) || !Object.keys(ZAMAKA).includes(kdaj_zamaka)) return json(400, 'Označite kdaj zamaka.');
+    const starostVal = isStr(starost_okna) ? starost_okna.trim() : '';
+    if (starostVal) {
+      if (isNaN(Number(starostVal))) return json(400, 'Neveljavna starost okna.');
+      const starostNum = parseInt(starostVal, 10);
+      if (starostNum < 0 || starostNum > 200) return json(400, 'Neveljavna starost okna.');
+    }
+    const opisVal = isStr(opis_problema) ? opis_problema.trim().slice(0, 2000) : '';
+    const kdajVal = isStr(kdaj_zamaka) ? kdaj_zamaka : '';
+    if (kdajVal && !Object.keys(ZAMAKA).includes(kdajVal)) return json(400, 'Neveljavna vrednost za kdaj zamaka.');
 
     if (foto_base64 !== undefined) {
       if (!isStr(foto_base64)) return json(400, 'Neveljavna fotografija.');
@@ -155,20 +167,21 @@ export const POST: APIRoute = async ({ request }) => {
         ${sectionHeader('Kontaktni podatki')}
         ${tdRow('Ime in priimek', ime)}
         ${tdRow('Telefon', telefon)}
+        ${tdRow('Naslov', naslov)}
         ${emailRaw ? tdRow('E-naslov', emailRaw) : ''}
-        ${sectionHeader('Podatki o oknu')}
-        ${tdRow('Starost okna', starost_okna + ' let')}
-        ${attachments ? tdRow('Fotografija ploščice', 'Priložena (glejte prilogo)') : tdRow('Fotografija ploščice', '—')}
-        ${sectionHeader('Opis težave')}
-        ${tdRow('Kdaj zamaka/pušča', ZAMAKA[kdaj_zamaka])}
-        <tr><td colspan="2" style="padding:10px 12px;white-space:pre-wrap;font-size:14px;">${esc(opis_problema)}</td></tr>
+        ${starostVal || attachments ? sectionHeader('Podatki o oknu') : ''}
+        ${starostVal ? tdRow('Starost okna', starostVal + ' let') : ''}
+        ${attachments ? tdRow('Fotografija ploščice', 'Priložena (glejte prilogo)') : ''}
+        ${kdajVal || opisVal ? sectionHeader('Opis težave') : ''}
+        ${kdajVal ? tdRow('Kdaj zamaka/pušča', ZAMAKA[kdajVal]) : ''}
+        ${opisVal ? `<tr><td colspan="2" style="padding:10px 12px;white-space:pre-wrap;font-size:14px;">${esc(opisVal)}</td></tr>` : ''}
       </table>
     </div>`;
   }
 
   try {
     const payload: Record<string, unknown> = {
-      from: 'Spletna stran <noreply@alesjelnikar.si>',
+      from: 'Spletna stran <info@alesjelnikar.si>',
       to: toEmail,
       subject,
       html,
