@@ -276,8 +276,8 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                   <input id="naslov_m" name="naslov" type="text" required maxlength="200" placeholder="Ulica 1, 1000 Ljubljana" class={inputCls} />
                 </div>
                 <div class="space-y-2 md:col-span-2">
-                  <label for="email_m" class={labelCls}>E-naslov</label>
-                  <input id="email_m" name="email" type="email" maxlength="200" placeholder="vas@email.com" class={inputCls} />
+                  <label for="email_m" class={labelCls}>E-naslov <span aria-label="obvezno">*</span></label>
+                  <input id="email_m" name="email" type="email" required maxlength="200" placeholder="vas@email.com" class={inputCls} />
                 </div>
               </div>
             </fieldset>
@@ -368,8 +368,8 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
                   <input id="naslov_s" name="naslov" type="text" required maxlength="200" placeholder="Ulica 1, 1000 Ljubljana" class={inputCls} />
                 </div>
                 <div class="space-y-2 md:col-span-2">
-                  <label for="email_s" class={labelCls}>E-naslov</label>
-                  <input id="email_s" name="email" type="email" maxlength="200" placeholder="vas@email.com" class={inputCls} />
+                  <label for="email_s" class={labelCls}>E-naslov <span aria-label="obvezno">*</span></label>
+                  <input id="email_s" name="email" type="email" required maxlength="200" placeholder="vas@email.com" class={inputCls} />
                 </div>
               </div>
             </fieldset>
@@ -481,6 +481,7 @@ const legendCls = "text-xs font-bold uppercase tracking-widest text-primary mb-4
     ime:     'Prosimo, vnesite ime in priimek.',
     telefon: 'Prosimo, vnesite telefonsko številko.',
     naslov:  'Prosimo, vnesite naslov.',
+    email:   'Prosimo, vnesite e-naslov.',
   };
 
   function markError(el: HTMLInputElement | HTMLTextAreaElement, msg: string) {

@@ -63,11 +63,10 @@ export const POST: APIRoute = async ({ request }) => {
   if (b.ime.length > 100) return json(400, 'Ime je predolgo.');
   if (!isStr(b.telefon) || !b.telefon.trim()) return json(400, 'Vnesite telefonsko številko.');
   if (b.telefon.length > 20) return json(400, 'Telefonska številka je predolga.');
-  const emailRaw = isStr(b.email) ? b.email.trim() : '';
-  if (emailRaw) {
-    if (emailRaw.length > 200) return json(400, 'E-naslov je predolg.');
-    if (!EMAIL_REGEX.test(emailRaw)) return json(400, 'Neveljaven e-naslov.');
-  }
+  if (!isStr(b.email) || !b.email.trim()) return json(400, 'Vnesite e-naslov.');
+  const emailRaw = b.email.trim();
+  if (emailRaw.length > 200) return json(400, 'E-naslov je predolg.');
+  if (!EMAIL_REGEX.test(emailRaw)) return json(400, 'Neveljaven e-naslov.');
   if (!isStr(b.naslov) || !b.naslov.trim()) return json(400, 'Vnesite naslov.');
   if (b.naslov.length > 200) return json(400, 'Naslov je predolg.');
   const naslov = b.naslov.trim();
