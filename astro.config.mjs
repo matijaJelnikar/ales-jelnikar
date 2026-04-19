@@ -10,6 +10,9 @@ export default defineConfig({
   output: 'server',
   trailingSlash: 'never',
   adapter: cloudflare(),
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/api/'),
