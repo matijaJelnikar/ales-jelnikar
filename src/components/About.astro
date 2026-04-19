@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import alesImg from "../assets/ales.jpg";
 ---
 
 <section id="o-nas" class="py-24 bg-surface-container">
@@ -7,13 +9,15 @@
       <!-- Image side -->
       <div class="lg:w-1/2 relative">
         <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 -z-10"></div>
-        <img
+        <Image
+          src={alesImg}
           alt="Aleš Jelnikar, priporočen VELUX izvajalec"
           class="shadow-2xl border-b-8 border-primary w-full object-cover"
-          src="/ales.jpg"
+          width={600}
+          height={600}
           loading="lazy"
-          width="600"
-          height="600"
+          format="webp"
+          quality={80}
         />
         <div class="absolute -bottom-10 -right-10 bg-white p-6 shadow-xl hidden md:block border border-outline-variant/20">
           <p class="text-4xl font-black text-primary font-headline tracking-tighter">15+</p>
