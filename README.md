@@ -1,6 +1,6 @@
 # alesjelnikar.si
 
-Marketing site for a VELUX roof window installation and repair business — <https://alesjelnikar.si/>
+Marketing site for a VELUX roof window installation and repair business - <https://alesjelnikar.si/>
 
 Astro 6 + Tailwind 4, content from Sanity, deployed to Cloudflare Workers. Contact forms send mail via Resend.
 
